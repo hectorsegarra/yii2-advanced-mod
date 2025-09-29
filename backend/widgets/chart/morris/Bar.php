@@ -39,7 +39,7 @@ class Bar extends Base
         $script = "
             let morris_bar_{$this->id} = new Morris.Bar({$clientOptions});
             // Fix for charts under tabs
-            $('a[data-toggle=tab').on('shown.bs.tab', function () {
+            $('a[data-bs-toggle=tab').on('shown.bs.tab', function () {
                 morris_bar_{$this->id}.redraw();
             });
          ";

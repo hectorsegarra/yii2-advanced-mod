@@ -16,8 +16,8 @@ if (empty($safeAttributes)) {
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\Html;
+use yii\bootstrap5\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
@@ -27,15 +27,15 @@ use yii\widgets\ActiveForm;
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
     <?= "<?php " ?>$form = ActiveForm::begin(); ?>
-    <div class="box-body">
+    <div class="card card-primary card-outline">
+        <div class="card-body">
 <?php foreach ($generator->getColumnNames() as $attribute) {
     if (in_array($attribute, $safeAttributes)) {
-        echo "        <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
+        echo "            <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
     }
 } ?>
-    </div>
-    <div class="box-footer">
-        <div class="form-group">
+        </div>
+        <div class="card-footer d-flex justify-content-end gap-2">
             <?= "<?= " ?>Html::submitButton('<span class="fas fa-save"></span> '.<?= $generator->generateString('Save') ?>, ['class' => 'btn btn-success']) ?>
         </div>
     </div>

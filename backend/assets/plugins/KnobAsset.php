@@ -13,7 +13,7 @@ use yii\web\AssetBundle;
 class KnobAsset extends AssetBundle
 {
     /** @var string */
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/bower_components/jquery-knob/dist';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/jquery-knob';
 
     /** @var string[] */
     public $js = ['jquery.knob.min.js'];

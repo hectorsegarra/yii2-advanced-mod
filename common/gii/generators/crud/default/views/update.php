@@ -19,7 +19,7 @@ if ($generator->enableI18N) {
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use yii\bootstrap5\Html;
 
 /* @var $this yii\web\View */
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = ['label' => $model-><?= $generator->getNameAttr
 $this->params['breadcrumbs'][] = <?= $generator->generateString('Update') ?>;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-update">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= '<?= ' ?>Html::encode($this->title) ?></h3>
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title mb-0"><?= '<?= ' ?>Html::encode($this->title) ?></h3>
         </div>
         <?= '<?= ' ?>$this->render('_form', [
             'model' => $model,

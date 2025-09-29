@@ -1,6 +1,5 @@
 <?php
 
-
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -66,112 +65,105 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php $this->head() ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <?php $this->beginBody() ?>
-
 <div class="wrapper">
-    <header class="main-header">
 
-        <a href="<?= $homeUrl ?>" class="logo">
-            <span class="logo-mini"><b>A</b>LT</span>
-            <span class="logo-lg"><b>Admin</b>LTE</span>
-        </a>
-        <nav class="navbar navbar-static-top">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="fas fa-bars"></span>
-            </a>
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?= $homeUrl ?>" class="nav-link"><?= MainModule::translate('module', 'Home') ?></a>
+            </li>
+        </ul>
 
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
+        <ul class="navbar-nav ms-auto">
 
-                    <?= MessagesWidget::widget([
-                        'status' => true,
-                        'image' => $publishedUrl ? Html::img($publishedUrl . '/img/user2-160x160.jpg', [
-                            'class' => 'img-circle',
+            <?= MessagesWidget::widget([
+                'status' => true,
+                'image' => $publishedUrl ? Html::img($publishedUrl . '/img/user2-160x160.jpg', [
+                    'class' => 'img-circle elevation-2',
+                    'alt' => 'User Image'
+                ]) : ''
+            ]) ?>
+
+            <?= NotificationsWidget::widget(['status' => true]) ?>
+
+            <?= TasksWidget::widget(['status' => true]) ?>
+
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                    <?= AvatarWidget::widget([
+                        'user_id' => $user->id,
+                        'imageOptions' => [
+                            'class' => 'user-image img-circle elevation-2',
                             'alt' => 'User Image'
-                        ]) : '']) ?>
-
-                    <?= NotificationsWidget::widget(['status' => true]) ?>
-
-                    <?= TasksWidget::widget(['status' => true]) ?>
-
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <?= AvatarWidget::widget([
-                                'user_id' => $user->id,
-                                'imageOptions' => [
-                                    'class' => 'user-image'
-                                ]
-                            ]) ?>
-                            <span class="hidden-xs"><?= $fullUserName ?></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="user-header">
-                                <?= AvatarWidget::widget([
-                                    'user_id' => $user->id
-                                ]) ?>
-                                <p>
-                                    <?= $fullUserName ?>
-                                    <small>
-                                        <?= UserModule::translate('module', 'Member since') . ' ' . $formatter->asDatetime($identity->created_at, 'LLL yyyy') // phpcs:ignore                 ?>
-                                    </small>
-                                </p>
-                            </li>
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="user-footer">
-                                <div class="float-start">
-                                    <a href="<?= Url::to(['/users/profile/index']) ?>"
-                                       class="btn btn-default btn-flat">
-                                        <?= UserModule::translate('module', 'Profile') ?>
-                                    </a>
-                                </div>
-                                <div class="float-end">
-                                    <?= Html::beginForm(['/users/default/logout'])
-                                    . Html::submitButton(UserModule::translate('module', 'Sign Out'), [
-                                        'class' => 'btn btn-default btn-flat logout'
-                                    ]) . Html::endForm() ?>
-                                </div>
-                            </li>
-                        </ul>
+                        ]
+                    ]) ?>
+                    <span class="d-none d-md-inline">&nbsp;<?= $fullUserName ?></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                    <li class="user-header bg-primary text-white text-center">
+                        <?= AvatarWidget::widget([
+                            'user_id' => $user->id,
+                            'imageOptions' => [
+                                'class' => 'img-circle elevation-2',
+                                'alt' => 'User Image'
+                            ]
+                        ]) ?>
+                        <p class="mt-2 mb-0">
+                            <?= $fullUserName ?>
+                            <small>
+                                <?= UserModule::translate('module', 'Member since') . ' ' . $formatter->asDatetime($identity->created_at, 'LLL yyyy') // phpcs:ignore ?>
+                            </small>
+                        </p>
                     </li>
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fas fa-cogs"></i></a>
+                    <li class="user-footer d-flex justify-content-between">
+                        <a href="<?= Url::to(['/users/profile/index']) ?>"
+                           class="btn btn-default btn-flat">
+                            <?= UserModule::translate('module', 'Profile') ?>
+                        </a>
+                        <?= Html::beginForm(['/users/default/logout'])
+                        . Html::submitButton(UserModule::translate('module', 'Sign Out'), [
+                            'class' => 'btn btn-default btn-flat logout'
+                        ]) . Html::endForm() ?>
                     </li>
                 </ul>
-            </div>
-        </nav>
-    </header>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <i class="fas fa-cogs"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <aside class="main-sidebar">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-        <section class="sidebar">
+        <a href="<?= $homeUrl ?>" class="brand-link">
+            <?php if ($publishedUrl) : ?>
+                <img src="<?= $publishedUrl ?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <?php endif; ?>
+            <span class="brand-text font-weight-light"><?= Html::encode(Yii::$app->name) ?></span>
+        </a>
 
-            <div class="user-panel">
-                <div class="float-start image">
+        <div class="sidebar">
+
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
                     <?= AvatarWidget::widget([
-                        'user_id' => $user->id
+                        'user_id' => $user->id,
+                        'imageOptions' => [
+                            'class' => 'img-circle elevation-2',
+                            'alt' => 'User Avatar'
+                        ]
                     ]) ?>
                 </div>
-                <div class="float-start info">
-                    <p><?= $fullUserName ?></p>
-                    <a href="#">
-                        <i class="fas fa-circle text-success"></i> <?= Yii::t('app', 'Online') ?>
-                    </a>
+                <div class="info">
+                    <a href="#" class="d-block"><?= $fullUserName ?></a>
+                    <span class="text-success small"><i class="fas fa-circle me-1"></i><?= Yii::t('app', 'Online') ?></span>
                 </div>
             </div>
 
@@ -181,7 +173,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
             $items = [
                 [
                     'label' => Yii::t('app', 'HEADER'),
-                    'options' => ['class' => 'header']
+                    'options' => ['class' => 'nav-header text-uppercase']
                 ],
                 [
                     'label' => $this->render('_label', [
@@ -204,9 +196,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                         'icon' => 'fa fa-unlock',
                         'title' => RbacModule::translate('module', 'RBAC')
                     ]),
-                    'url' => ['/rbac/default/index'],
-                    'options' => ['class' => 'treeview'],
-                    'visible' => $user->can(Permission::PERMISSION_MANAGER_RBAC),
+                    'url' => '#',
                     'items' => [
                         [
                             'label' => $this->render('_label', [
@@ -229,7 +219,8 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                             ]),
                             'url' => ['/rbac/assign/index']
                         ]
-                    ]
+                    ],
+                    'visible' => $user->can(Permission::PERMISSION_MANAGER_RBAC)
                 ],
                 [
                     'label' => $this->render('_label', [
@@ -250,9 +241,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                         'isRoot' => true,
                         'title' => Yii::t('app', 'Multilevel')
                     ]),
-                    'url' => ['#'],
-                    'options' => ['class' => 'treeview'],
-                    'visible' => !Yii::$app->user->isGuest,
+                    'url' => '#',
                     'items' => [
                         [
                             'label' => $this->render('_label', [
@@ -267,12 +256,11 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                                 'icon' => 'far fa-circle',
                                 'title' => Yii::t('app', 'Link in level 2')
                             ]),
-                            'url' => ['#'],
-                            'options' => ['class' => 'treeview'],
+                            'url' => '#',
                             'items' => [
                                 [
                                     'label' => Yii::t('app', 'Link in level 3'),
-                                    'url' => ['#']
+                                    'url' => ['#'],
                                 ]
                             ]
                         ]
@@ -280,45 +268,63 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                 ]
             ];
             echo Menu::widget([
-                'options' => ['class' => 'sidebar-menu'],
+                'options' => [
+                    'class' => 'nav nav-pills nav-sidebar flex-column',
+                    'data-widget' => 'treeview',
+                    'role' => 'menu',
+                    'data-accordion' => 'false'
+                ],
+                'itemOptions' => ['class' => 'nav-item'],
                 'encodeLabels' => false,
-                'submenuTemplate' => "\n<ul class='treeview-menu'>\n{items}\n</ul>\n",
+                'linkTemplate' => '<a href="{url}" class="nav-link">{label}</a>',
+                'submenuTemplate' => "\n<ul class=\"nav nav-treeview\">\n{items}\n</ul>\n",
                 'activateParents' => true,
                 'items' => $items
             ]);
             ?>
-        </section>
+        </div>
     </aside>
 
     <div class="content-wrapper">
-        <section class="content-header">
-            <h1>
-                <?php
-                $small = isset($this->params['title']['small']) ?
-                    ' ' . Html::tag('small', Html::encode($this->params['title']['small'])) : '';
-                echo Html::encode($this->title) . $small ?>
-            </h1>
-            <?= Breadcrumbs::widget([
-                'homeLink' => [
-                    'label' => '<i class="fa fa-dashboard"></i> ' . MainModule::translate('module', 'Home'),
-                    'url' => Url::to(['/main/default/index'])],
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                'encodeLabels' => false
-            ]) ?>
-        </section>
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <?php
+                        $small = isset($this->params['title']['small']) ?
+                            ' ' . Html::tag('small', Html::encode($this->params['title']['small']), ['class' => 'text-muted fs-6']) : '';
+                        echo Html::tag('h1', Html::encode($this->title) . $small, ['class' => 'm-0']);
+                        ?>
+                    </div>
+                    <div class="col-sm-6">
+                        <?= Breadcrumbs::widget([
+                            'homeLink' => [
+                                'label' => '<i class="fas fa-tachometer-alt"></i> ' . MainModule::translate('module', 'Home'),
+                                'url' => Url::to(['/main/default/index'])
+                            ],
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                            'encodeLabels' => false,
+                            'options' => ['class' => 'breadcrumb float-sm-end mb-0']
+                        ]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="content">
-            <?= $content ?>
+            <div class="container-fluid">
+                <?= $content ?>
+            </div>
         </section>
 
     </div>
 
     <footer class="main-footer">
 
-        <div class="float-end hidden-xs">
+        <div class="float-end d-none d-sm-inline">
 
         </div>
         <strong>&copy; <?= date('Y') ?> <a
-                    href="#"><?= Yii::$app->name ?></a>.</strong>
+                    href="#"><?= Html::encode(Yii::$app->name) ?></a>.</strong>
         <?= Yii::t('app', 'All rights reserved.') ?>
     </footer>
 

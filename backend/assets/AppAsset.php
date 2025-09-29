@@ -9,8 +9,6 @@ use common\assets\Html5ShivAsset;
 use common\assets\RespondAsset;
 use common\assets\FontAwesomeAsset;
 use common\assets\IonIconsAsset;
-use backend\assets\plugins\SlimScrollAsset;
-use backend\assets\plugins\FastClickAsset;
 use backend\assets\plugins\KnobAsset;
 
 /**
@@ -50,8 +48,6 @@ class AppAsset extends AssetBundle
         RespondAsset::class,
         FontAwesomeAsset::class,
         IonIconsAsset::class,
-        SlimScrollAsset::class,
-        FastClickAsset::class,
         KnobAsset::class,
         AdminLteAsset::class
     ];

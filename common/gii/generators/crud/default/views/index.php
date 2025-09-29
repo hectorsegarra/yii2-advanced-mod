@@ -12,7 +12,7 @@ $nameAttribute = $generator->getNameAttribute();
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use yii\bootstrap5\Html;
 use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 <?php if ($generator->indexWidgetType === 'grid') : ?>
 use yii\widgets\LinkPager;
@@ -27,41 +27,39 @@ $this->title = <?= $generator->generateString(Inflector::pluralize(Inflector::ca
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
-            <div class="box-tools float-end"></div>
+    <div class="card card-primary card-outline">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3 class="card-title mb-0"><?= "<?= " ?>Html::encode($this->title) ?></h3>
+            <div class="card-tools"></div>
         </div>
 <?= $generator->enablePjax ? "        <?php Pjax::begin(); ?>\n" : '' ?>
-        <div class="box-body">
+        <div class="card-body">
             <?php if (!empty($generator->searchModelClass)) : ?>
 <?= "<?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
             <?php endif; ?>
             <?php if (($generator->indexWidgetType === 'grid') && $generator->enablePageSize) : ?>
 
-            <div class="float-start">
+            <div class="float-start mb-3">
                 <?= "<?= " ?>common\widgets\PageSize::widget([
                     'label' => '',
                     'defaultPageSize' => 25,
                     'sizes' => [10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50, 100 => 100, 200 => 200],
                     'options' => [
-                        'class' => 'form-control'
+                        'class' => 'form-select'
                     ]
                 ])<?= " ?>\r" ?>
             </div>
             <?php endif; ?><?= "\r" ?>
-            <div class="float-end">
-                <p>
-                    <?= "<?= " ?>Html::a('<span class="fa fa-plus"></span>', ['create'], [
-                        'class' => 'btn btn-block btn-success',
-                        'title' => 'Create',
-                        'data' => [
-                            'toggle' => 'tooltip',
-                            'placement' => 'left',
-                            'pjax' => 0
-                        ]
-                    ]) ?>
-                </p>
+            <div class="float-end mb-3">
+                <?= "<?= " ?>Html::a('<span class="fa fa-plus"></span>', ['create'], [
+                    'class' => 'btn btn-success',
+                    'title' => 'Create',
+                    'data' => [
+                        'bs-toggle' => 'tooltip',
+                        'bs-placement' => 'left',
+                        'pjax' => 0
+                    ]
+                ]) ?>
             </div>
 <?php if ($generator->indexWidgetType === 'grid') : ?>
             <?= "<?= " ?>GridView::widget([
@@ -76,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }?>
                 'layout' => "{items}",
                 'tableOptions' => [
-                    'class' => 'table table-bordered table-hover',
+                    'class' => 'table table-striped table-bordered align-middle',
                 ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
@@ -117,12 +115,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php endif; ?>
         </div>
         <?php if ($generator->indexWidgetType === 'grid') : ?>
-<div class="box-footer">
+        <div class="card-footer d-flex justify-content-end">
             <?= "<?= " ?>LinkPager::widget([
                 'pagination' => $dataProvider->pagination,
                 'registerLinkTags' => true,
                 'options' => [
-                    'class' => 'pagination pagination-sm no-margin float-end',
+                    'class' => 'pagination pagination-sm mb-0'
                 ]
             ])<?= " ?>\r"?>
         </div>

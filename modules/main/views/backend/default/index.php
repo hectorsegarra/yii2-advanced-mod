@@ -86,13 +86,13 @@ $this->params['title']['small'] = Module::translate('module', 'Dashboard');
         <section class="col-lg-7 connectedSortable">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs float-end">
-                    <li class="active"><a href="#area-chart" data-toggle="tab">Area</a></li>
-                    <li><a href="#doughnut-chart" data-toggle="tab">Doughnut</a></li>
-                    <li><a href="#pie-chart" data-toggle="tab">Pie</a></li>
-                    <li><a href="#line-chart" data-toggle="tab">Line</a></li>
-                    <li><a href="#bar-chart" data-toggle="tab">Bar</a></li>
-                    <li><a href="#radar-chart" data-toggle="tab">Radar</a></li>
-                    <li><a href="#bubble-chart" data-toggle="tab">Bubble</a></li>
+                    <li class="active"><a href="#area-chart" data-bs-toggle="tab">Area</a></li>
+                    <li><a href="#doughnut-chart" data-bs-toggle="tab">Doughnut</a></li>
+                    <li><a href="#pie-chart" data-bs-toggle="tab">Pie</a></li>
+                    <li><a href="#line-chart" data-bs-toggle="tab">Line</a></li>
+                    <li><a href="#bar-chart" data-bs-toggle="tab">Bar</a></li>
+                    <li><a href="#radar-chart" data-bs-toggle="tab">Radar</a></li>
+                    <li><a href="#bubble-chart" data-bs-toggle="tab">Bubble</a></li>
                     <li class="float-start header"><i class="fa fa-bar-chart"></i> Charts</li>
                 </ul>
 
@@ -476,11 +476,11 @@ $this->params['title']['small'] = Module::translate('module', 'Dashboard');
                     <div class="box-tools float-end">
                         <!--<button type="button"
                          class="btn btn-primary btn-sm daterange float-end"
-                         data-toggle="tooltip"
+                         data-bs-toggle="tooltip"
                                 title="Date range">
                             <i class="fa fa-calendar"></i></button>-->
-                        <button type="button" class="btn btn-primary btn-sm float-end" data-widget="collapse"
-                                data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+                        <button type="button" class="btn btn-primary btn-sm float-end" data-card-widget="collapse"
+                                data-bs-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
                             <i class="fa fa-minus"></i>
                         </button>
                     </div>

@@ -9,7 +9,7 @@ use yii\helpers\StringHelper;
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use yii\bootstrap5\Html;
 
 /* @var $this yii\web\View */
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
@@ -19,9 +19,9 @@ $this->params['breadcrumbs'][] = ['label' => <?= $generator->generateString(Infl
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-create">
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title mb-0"><?= "<?= " ?>Html::encode($this->title) ?></h3>
         </div>
         <?= "<?= " ?>$this->render('_form', [
             'model' => $model,

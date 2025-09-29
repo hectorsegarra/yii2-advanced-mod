@@ -39,7 +39,7 @@ class Area extends Base
         $script = "
             let morris_area_{$this->id} = new Morris.Chart({$clientOptions});
             // Fix for charts under tabs
-            $('a[data-toggle=tab').on('shown.bs.tab', function () {
+            $('a[data-bs-toggle=tab').on('shown.bs.tab', function () {
                 morris_area_{$this->id}.redraw();
             });
          ";

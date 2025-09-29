@@ -14,7 +14,7 @@ use modules\users\Module;
 
 $this->registerJs(new yii\web\JsExpression("
     $(function () {
-        $('[data-toggle=\"tooltip\"]').tooltip();        
+        $('[data-bs-toggle=\"tooltip\"]').tooltip();
     });
 "), yii\web\View::POS_END);
 ?>

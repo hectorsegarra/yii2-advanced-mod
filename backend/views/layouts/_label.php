@@ -1,14 +1,15 @@
 <?php
-/** @var string $icon */
-/** @var string $title */
-/** @var bool $isRoot */
 
-$defaultIcon = 'fa fa-link';
-$isRoot = isset($isRoot);
+use yii\bootstrap5\Html;
+
+/** @var string|null $icon */
+/** @var string $title */
+/** @var bool|null $isRoot */
+
+$defaultIcon = 'far fa-circle';
+$isRoot = isset($isRoot) && $isRoot;
+$iconClass = ($icon ?? $defaultIcon);
 ?>
 
-<i class="<?= isset($icon) ? $icon : $defaultIcon ?>"></i>
-<span><?= $title ?></span>
-<?php if ($isRoot) { ?>
-    <span class="float-end-container"><i class="fa fa-angle-left float-end"></i></span>
-<?php } ?>
+<?= Html::tag('i', '', ['class' => 'nav-icon ' . $iconClass]) ?>
+<?= Html::tag('p', Html::encode($title) . ($isRoot ? Html::tag('i', '', ['class' => 'fas fa-angle-left right']) : '')) ?>

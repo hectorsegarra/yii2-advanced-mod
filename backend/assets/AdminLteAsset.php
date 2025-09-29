@@ -23,8 +23,7 @@ class AdminLteAsset extends AssetBundle
         parent::init();
         $min = YII_ENV_DEV ? '' : '.min';
         $this->css = [
-            'css/AdminLTE' . $min . '.css',
-            'css/skins/_all-skins' . $min . '.css'
+            'css/adminlte' . $min . '.css',
         ];
         $this->js = [
             'js/adminlte' . $min . '.js'

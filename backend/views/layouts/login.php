@@ -25,25 +25,24 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
 </head>
 <body class="hold-transition login-page">
 <?php $this->beginBody() ?>
-<div class="row">
-    <div class="col-md-12">
-        <?= Alert::widget([
-            'options' => [
-                'style' => 'text-align:center;'
-            ]
-        ]) ?>
-    </div>
-</div>
 <div class="login-box">
     <div class="login-logo">
         <a href="<?= $homeUrl ?>"><b>Admin</b>LTE</a><br>
-        <?= Yii::$app->name ?>
+        <?= Html::encode(Yii::$app->name) ?>
     </div>
-    <div class="login-box-body">
-        <?= $content ?>
-    </div>
-    <div class="login-box-footer">
-        <a href="<?= Url::to('/') ?>"><?= Yii::t('app', 'Go to Frontend') ?></a>
+    <div class="card shadow-sm">
+        <div class="card-body login-card-body">
+            <?= Alert::widget([
+                'options' => [
+                    'class' => 'text-center mb-3'
+                ],
+                'closeButton' => false
+            ]) ?>
+            <?= $content ?>
+        </div>
+        <div class="card-footer text-center">
+            <a href="<?= Url::to('/') ?>"><?= Yii::t('app', 'Go to Frontend') ?></a>
+        </div>
     </div>
 </div>
 

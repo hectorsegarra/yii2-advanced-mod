@@ -6,22 +6,19 @@ use yii\web\View;
  * @var $this View
  */
 ?>
-<li class="dropdown notifications-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
         <i class="far fa-bell"></i>
-        <span class="label label-warning">10</span>
+        <span class="badge bg-warning navbar-badge">10</span>
     </a>
-    <ul class="dropdown-menu">
-        <li class="header">You have 10 notifications</li>
-        <li>
-            <ul class="menu">
-                <li>
-                    <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="footer"><a href="#">View all</a></li>
-    </ul>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+        <span class="dropdown-header">10 Notifications</span>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item">
+            <i class="fas fa-users me-2"></i> 5 new members joined today
+            <span class="float-end text-muted text-sm">Today</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item dropdown-footer">View all</a>
+    </div>
 </li>

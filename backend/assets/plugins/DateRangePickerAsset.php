@@ -15,7 +15,7 @@ class DateRangePickerAsset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/bower_components/bootstrap-daterangepicker';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/daterangepicker';
 
     /**
      * @inheritdoc
@@ -23,11 +23,12 @@ class DateRangePickerAsset extends AssetBundle
     public function init()
     {
         parent::init();
+        $min = YII_ENV_DEV ? '' : '.min';
         $this->css = [
             'daterangepicker.css'
         ];
         $this->js = [
-            'daterangepicker.js'
+            'daterangepicker' . $min . '.js'
         ];
     }
 

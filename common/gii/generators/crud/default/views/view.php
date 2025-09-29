@@ -11,7 +11,7 @@ $urlParams = $generator->generateUrlParams();
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use yii\bootstrap5\Html;
 use yii\widgets\DetailView;
 use yii\web\YiiAsset;
 
@@ -24,33 +24,31 @@ $this->params['breadcrumbs'][] = $this->title;
 YiiAsset::register($this);
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-view">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
-        </div>
-        <div class="box-body">
-            <div class="float-end">
-                <p>
-                    <?= "<?= " ?>Html::a(
-                        '<span class="fas fa-pen" aria-hidden="true"></span> ' .
-                        <?= $generator->generateString('Update') ?>,
-                        ['update', <?= $urlParams ?>],
-                        ['class' => 'btn btn-primary']
-                    ) ?>
-                    <?= "<?= " ?>Html::a(
-                        '<span class="fas fa-trash" aria-hidden="true"></span> ' .
-                        <?= $generator->generateString('Delete') ?>,
-                        ['delete', <?= $urlParams ?>],
-                        [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => <?= $generator->generateString('Are you sure you want to delete this item?') ?>,
-                                'method' => 'post',
-                            ],
-                        ]
-                    ) ?>
-                </p>
+    <div class="card card-primary card-outline">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3 class="card-title mb-0"><?= "<?= " ?>Html::encode($this->title) ?></h3>
+            <div class="btn-group" role="group" aria-label="<?= $generator->generateString('Actions') ?>">
+                <?= "<?= " ?>Html::a(
+                    '<span class="fas fa-pen" aria-hidden="true"></span> ' .
+                    <?= $generator->generateString('Update') ?>,
+                    ['update', <?= $urlParams ?>],
+                    ['class' => 'btn btn-primary']
+                ) ?>
+                <?= "<?= " ?>Html::a(
+                    '<span class="fas fa-trash" aria-hidden="true"></span> ' .
+                    <?= $generator->generateString('Delete') ?>,
+                    ['delete', <?= $urlParams ?>],
+                    [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => <?= $generator->generateString('Are you sure you want to delete this item?') ?>,
+                            'method' => 'post',
+                        ],
+                    ]
+                ) ?>
             </div>
+        </div>
+        <div class="card-body">
             <?= "<?= " ?>DetailView::widget([
                 'model' => $model,
                 'attributes' => [

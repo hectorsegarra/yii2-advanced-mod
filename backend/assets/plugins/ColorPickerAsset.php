@@ -15,7 +15,7 @@ class ColorPickerAsset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/bower_components/bootstrap-colorpicker';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/bootstrap-colorpicker';
 
     /**
      * @inheritdoc
@@ -25,10 +25,10 @@ class ColorPickerAsset extends AssetBundle
         parent::init();
         $min = YII_ENV_DEV ? '' : '.min';
         $this->css = [
-            'dist/css/bootstrap-colorpicker' . $min . '.css'
+            'css/bootstrap-colorpicker' . $min . '.css'
         ];
         $this->js = [
-            'dist/js/bootstrap-colorpicker' . $min . '.js'
+            'js/bootstrap-colorpicker' . $min . '.js'
         ];
     }
 

@@ -28,7 +28,7 @@ class LoginAdminLteAsset extends AssetBundle
     {
         parent::init();
         $min = YII_ENV_DEV ? '' : '.min';
-        $this->css = ['css/AdminLTE' . $min . '.css'];
+        $this->css = ['css/adminlte' . $min . '.css'];
     }
 
     /**

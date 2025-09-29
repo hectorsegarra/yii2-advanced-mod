@@ -2,10 +2,7 @@
 
 namespace backend\assets\plugins;
 
-use Yii;
 use yii\web\AssetBundle;
-use yii\web\JsExpression;
-use yii\web\JqueryAsset;
 use backend\assets\BootstrapAsset;
 
 /**
@@ -17,7 +14,7 @@ class ICheckAsset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/icheck-bootstrap';
 
     /**
      * @inheritdoc
@@ -27,26 +24,14 @@ class ICheckAsset extends AssetBundle
         parent::init();
         $min = YII_ENV_DEV ? '' : '.min';
         $this->css = [
-            'iCheck/all.css'
+            'icheck-bootstrap' . $min . '.css'
         ];
-        $this->js = ['iCheck/icheck' . $min . '.js'];
-        $view = Yii::$app->getView();
-        $view->registerJs(new JsExpression("
-            $(function () {
-                $('input.iCheck').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
-            });
-        "));
     }
 
     /**
      * @var array
      */
     public $depends = [
-        JqueryAsset::class,
         BootstrapAsset::class
     ];
 }
