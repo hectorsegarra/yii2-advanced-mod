@@ -5,10 +5,7 @@ namespace backend\assets;
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
 use common\assets\FontAwesomeAsset;
-use common\assets\IonIconsAsset;
-use backend\assets\plugins\ICheckAsset;
-use common\assets\Html5ShivAsset;
-use common\assets\RespondAsset;
+use backend\assets\BootstrapAsset;
 
 /**
  * Class LoginAdminLteAsset
@@ -27,8 +24,7 @@ class LoginAdminLteAsset extends AssetBundle
     public function init()
     {
         parent::init();
-        $min = YII_ENV_DEV ? '' : '.min';
-        $this->css = ['css/AdminLTE' . $min . '.css'];
+        $this->css = ['css/adminlte.css'];
     }
 
     /**
@@ -38,9 +34,5 @@ class LoginAdminLteAsset extends AssetBundle
         YiiAsset::class,
         BootstrapAsset::class,
         FontAwesomeAsset::class,
-        IonIconsAsset::class,
-        ICheckAsset::class,
-        Html5ShivAsset::class,
-        RespondAsset::class
     ];
 }

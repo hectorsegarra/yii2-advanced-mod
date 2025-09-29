@@ -3,7 +3,7 @@
 namespace backend\widgets\control;
 
 use yii\bootstrap5\Widget;
-use yii\web\JsExpression;
+use backend\widgets\control\DemoAsset;
 
 /**
  * Class ControlSidebar
@@ -37,14 +37,9 @@ class ControlSidebar extends Widget
      */
     public function registerAssets()
     {
-        $view = $this->getView();
-        $script = new JsExpression("
-            $('a[href=\"#control-sidebar-home-tab\"]').parent().removeClass('active');
-            $('#control-sidebar-home-tab').removeClass('active');
-        ");
         if ($this->demo === true) {
+            $view = $this->getView();
             DemoAsset::register($view);
-            $view->registerJs($script);
         }
     }
 }

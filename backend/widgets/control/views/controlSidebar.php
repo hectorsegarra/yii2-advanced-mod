@@ -1,72 +1,48 @@
-<aside class="control-sidebar control-sidebar-dark">
-
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-        <li class="active">
-            <a href="#control-sidebar-home-tab" data-toggle="tab">
-                <i class="fas fa-home"></i></a>
-        </li>
-        <li>
-            <a href="#control-sidebar-settings-tab" data-toggle="tab">
-                <i class="fas fa-cogs"></i></a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-
-        <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading"><?= Yii::t('app', 'Recent Activity') ?></h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript::">
-                        <i class="menu-icon fas fa-birthday-cake bg-red"></i>
-
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                            <p>Will be 23 on April 24th</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-
-            <h3 class="control-sidebar-heading"><?= Yii::t('app', 'Tasks Progress') ?></h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript::">
-                        <h4 class="control-sidebar-subheading">
-                            Custom Template Design
-                                <span class="float-end-container">
-                                  <span class="label label-danger float-end">70%</span>
-                                </span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-                <h3 class="control-sidebar-heading"><?= Yii::t('app', 'General Settings') ?></h3>
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Report panel usage
-                        <input type="checkbox" class="float-end" checked>
-                    </label>
-
-                    <p>
-                        Some information about this general settings option
-                    </p>
-                </div>
-
-            </form>
-        </div>
-
+<div class="offcanvas offcanvas-end" tabindex="-1" id="app-control-sidebar" aria-labelledby="app-control-sidebar-label">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="app-control-sidebar-label"><?= Yii::t('app', 'Settings') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?= Yii::t('app', 'Close') ?>"></button>
     </div>
-</aside>
+    <div class="offcanvas-body">
+        <section class="mb-4">
+            <h6 class="text-uppercase text-body-secondary small mb-3"><?= Yii::t('app', 'Recent Activity') ?></h6>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-start">
+                    <span class="badge rounded-pill text-bg-danger me-3"><i class="fas fa-birthday-cake"></i></span>
+                    <div>
+                        <h6 class="mb-1">Langdon's Birthday</h6>
+                        <p class="mb-0 small text-body-secondary">Will be 23 on April 24th</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-<div class="control-sidebar-bg"></div>
+        <section class="mb-4">
+            <h6 class="text-uppercase text-body-secondary small mb-3"><?= Yii::t('app', 'Tasks Progress') ?></h6>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Custom Template Design</span>
+                        <span class="badge text-bg-danger">70%</span>
+                    </div>
+                    <div class="progress mt-2" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-danger" style="width: 70%"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h6 class="text-uppercase text-body-secondary small mb-3"><?= Yii::t('app', 'General Settings') ?></h6>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="report-panel" checked>
+                <label class="form-check-label" for="report-panel">
+                    <?= Yii::t('app', 'Report panel usage') ?>
+                </label>
+                <p class="small text-body-secondary mb-0">
+                    <?= Yii::t('app', 'Some information about this general settings option') ?>
+                </p>
+            </div>
+        </section>
+    </div>
+</div>

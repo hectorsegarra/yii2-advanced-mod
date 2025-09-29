@@ -6,22 +6,23 @@ use yii\web\View;
  * @var $this View
  */
 ?>
-<li class="dropdown notifications-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
         <i class="far fa-bell"></i>
-        <span class="label label-warning">10</span>
+        <span class="badge text-bg-warning ms-1">10</span>
     </a>
-    <ul class="dropdown-menu">
-        <li class="header">You have 10 notifications</li>
-        <li>
-            <ul class="menu">
-                <li>
-                    <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="footer"><a href="#">View all</a></li>
-    </ul>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+        <div class="dropdown-header text-center py-3">
+            <strong><?= Yii::t('app', 'You have {count} notifications', ['count' => 10]) ?></strong>
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <i class="fa fa-users text-primary me-3"></i>
+                <span class="small">5 new members joined today</span>
+            </a>
+        </div>
+        <div class="dropdown-footer text-center py-2">
+            <a href="#" class="text-decoration-none"><?= Yii::t('app', 'View all') ?></a>
+        </div>
+    </div>
 </li>

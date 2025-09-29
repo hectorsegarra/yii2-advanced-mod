@@ -3,12 +3,18 @@
 /** @var string $title */
 /** @var bool $isRoot */
 
-$defaultIcon = 'fa fa-link';
+$defaultIcon = 'fas fa-link';
 $isRoot = isset($isRoot);
+$iconClass = isset($icon) ? $icon : $defaultIcon;
+if (strpos($iconClass, 'nav-icon') === false) {
+    $iconClass = 'nav-icon ' . $iconClass;
+}
 ?>
 
-<i class="<?= isset($icon) ? $icon : $defaultIcon ?>"></i>
-<span><?= $title ?></span>
-<?php if ($isRoot) { ?>
-    <span class="float-end-container"><i class="fa fa-angle-left float-end"></i></span>
-<?php } ?>
+<i class="<?= $iconClass ?>"></i>
+<p class="mb-0">
+    <?= $title ?>
+    <?php if ($isRoot) { ?>
+        <i class="fas fa-angle-left end"></i>
+    <?php } ?>
+</p>
