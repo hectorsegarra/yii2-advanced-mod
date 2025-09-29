@@ -12,9 +12,9 @@ if (strpos($iconClass, 'nav-icon') === false) {
 ?>
 
 <i class="<?= $iconClass ?>"></i>
-<p class="mb-0">
+<span class="flex-grow-1 fw-semibold">
     <?= $title ?>
-    <?php if ($isRoot) { ?>
-        <i class="fas fa-angle-left end"></i>
-    <?php } ?>
-</p>
+</span>
+<?php if ($isRoot) { ?>
+    <i class="fas fa-angle-left end"></i>
+<?php } ?>

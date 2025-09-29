@@ -25,6 +25,7 @@ class LoginAdminLteAsset extends AssetBundle
     {
         parent::init();
         $this->css = ['css/adminlte.css'];
+        $this->js = ['js/adminlte.js'];
     }
 
     /**

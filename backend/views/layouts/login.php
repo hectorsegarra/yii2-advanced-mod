@@ -22,7 +22,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->head() ?>
 </head>
-<body class="login-page bg-body-tertiary">
+<body class="login-page bg-body-tertiary" data-bs-theme="light">
 <?php $this->beginBody() ?>
 <div class="container py-5">
     <div class="row justify-content-center">
@@ -32,20 +32,23 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     'class' => 'alert text-center'
                 ]
             ]) ?>
-            <div class="card shadow-sm border-0">
-                <div class="card-header text-center bg-primary text-white py-4">
-                    <a href="<?= $homeUrl ?>" class="d-block text-decoration-none text-white mb-2 fw-semibold">
-                        <span>AdminLTE</span>
+            <div class="card">
+                <div class="card-header text-center text-white py-5">
+                    <a href="<?= $homeUrl ?>" class="d-inline-flex align-items-center justify-content-center text-decoration-none text-white mb-3">
+                        <span class="brand-logo d-inline-flex align-items-center justify-content-center rounded-4 bg-white text-primary shadow-sm me-2">
+                            <i class="fas fa-layers"></i>
+                        </span>
+                        <span class="fw-semibold text-uppercase tracking-wide">AdminLTE</span>
                     </a>
-                    <div class="small text-white-50">
+                    <div class="small text-white-50 text-uppercase">
                         <?= Html::encode(Yii::$app->name) ?>
                     </div>
                 </div>
-                <div class="card-body p-4">
+                <div class="card-body">
                     <?= $content ?>
                 </div>
-                <div class="card-footer text-center bg-body-tertiary">
-                    <a href="<?= Url::to('/') ?>" class="text-decoration-none">
+                <div class="card-footer text-center">
+                    <a href="<?= Url::to('/') ?>" class="text-decoration-none fw-semibold">
                         <?= Yii::t('app', 'Go to Frontend') ?>
                     </a>
                 </div>

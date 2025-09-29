@@ -3,22 +3,98 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 3rem 1rem;
+    background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.18), transparent 50%),
+        var(--bs-body-bg);
 }
 
 .login-page .card {
-    border-radius: 1rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1.5rem 3.5rem rgba(15, 23, 42, 0.16);
+    border: 0;
+    overflow: hidden;
 }
 
 .login-page .card-header {
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border: 0;
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.85), rgba(99, 102, 241, 0.85));
+}
+
+.login-page .card-header span {
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+}
+
+.login-page .brand-logo {
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.35rem;
+}
+
+.login-page .tracking-wide {
+    letter-spacing: 0.42em;
+    font-size: 0.8rem;
+}
+
+.login-page .card-header .small {
+    opacity: 0.85;
+}
+
+.login-page .card-body {
+    padding: 2.25rem;
 }
 
 .login-page .card-footer {
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border: 0;
+    background: rgba(var(--bs-primary-rgb), 0.05);
+    padding: 1.25rem;
 }
 
-.login-page .card .btn {
+.login-page .form-control {
+    border-radius: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-color: rgba(var(--bs-body-color-rgb, 33, 37, 41), 0.15);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-page .form-control:focus {
+    border-color: rgba(var(--bs-primary-rgb), 0.45);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.18);
+}
+
+.login-page .btn {
     border-radius: 999px;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    box-shadow: 0 0.5rem 1.5rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+.login-page .btn:hover,
+.login-page .btn:focus {
+    box-shadow: 0 0.75rem 2rem rgba(var(--bs-primary-rgb), 0.3);
+}
+
+.login-page .form-check-label {
+    color: var(--bs-secondary-color);
+}
+
+.login-page .forgot-link {
+    color: var(--bs-secondary-color);
+    transition: color 0.2s ease;
+}
+
+.login-page .forgot-link:hover,
+.login-page .forgot-link:focus {
+    color: var(--bs-primary);
+}
+
+@media (max-width: 575.98px) {
+    .login-page {
+        padding: 2rem 1rem;
+    }
+
+    .login-page .card-body {
+        padding: 1.75rem;
+    }
 }
