@@ -2,16 +2,12 @@
 
 use yii\log\FileTarget;
 use yii\console\controllers\MigrateController;
-use yii\helpers\ArrayHelper;
+use yii\helpers.ArrayHelper;
 use modules\rbac\Module as RbacModule;
 use modules\main\Bootstrap as MainBootstrap;
 use modules\users\Bootstrap as UserBootstrap;
 use modules\rbac\Bootstrap as RbacBootstrap;
 use modules\users\models\User;
-use dominus77\maintenance\states\FileState;
-use dominus77\maintenance\interfaces\StateInterface;
-use dominus77\maintenance\BackendMaintenance;
-use dominus77\maintenance\commands\MaintenanceController;
 
 $params = ArrayHelper::merge(
     require __DIR__ . '/../../common/config/params.php',
@@ -22,22 +18,14 @@ $params = ArrayHelper::merge(
 
 return [
     'id' => 'app-console',
-    'language' => 'en', // en, ru
+    'language' => 'en',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
         MainBootstrap::class,
         UserBootstrap::class,
         RbacBootstrap::class,
-        BackendMaintenance::class
-    ],
-    'container' => [
-        'singletons' => [
-            StateInterface::class => [
-                'class' => FileState::class,
-                'directory' => '@frontend/runtime',
-            ]
-        ]
+        // no hace falta BackendMaintenance aquí; usamos el comando de brussens
     ],
     'controllerNamespace' => 'console\controllers',
     'controllerMap' => [
@@ -48,8 +36,9 @@ return [
                 'modules\users\migrations'
             ]
         ],
+        // comandos de mantenimiento (brussens)
         'maintenance' => [
-            'class' => MaintenanceController::class,
+            'class' => 'brussens\maintenance\commands\MaintenanceController',
         ],
     ],
     'modules' => [
@@ -71,7 +60,7 @@ return [
         ],
         'urlManager' => [
             'baseUrl' => '/',
-            'hostInfo' => $params['frontendUrl'], // set in common/config/params.php
+            'hostInfo' => $params['frontendUrl'],
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'enableStrictParsing' => true,

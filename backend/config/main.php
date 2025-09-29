@@ -5,8 +5,6 @@ use yii\bootstrap5\BootstrapPluginAsset;
 use yii\log\FileTarget;
 use yii\web\UrlManager;
 use yii\helpers\ArrayHelper;
-use dominus77\maintenance\BackendMaintenance;
-use dominus77\maintenance\controllers\backend\MaintenanceController;
 use modules\rbac\models\Permission;
 use modules\users\models\User;
 use modules\rbac\components\behavior\AccessBehavior;
@@ -25,7 +23,7 @@ $params = ArrayHelper::merge(
 
 return [
     'id' => 'app-backend',
-    'language' => 'en', // en, ru
+    'language' => 'en',
     'homeUrl' => '/admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -35,7 +33,8 @@ return [
         MainBootstrap::class,
         UserBootstrap::class,
         RbacBootstrap::class,
-        BackendMaintenance::class
+        // activar maintenance en backend si quieres bloquear admin durante obras:
+        // 'maintenance',
     ],
     'modules' => [
         'main' => [
@@ -49,13 +48,15 @@ return [
             'params' => [
                 'userClass' => User::class
             ]
-        ]
+        ],
+        // módulo de mantenimiento (brussens)
+        'maintenance' => [
+            'class' => 'brussens\maintenance\Module',
+        ],
     ],
     'controllerMap' => [
-        'maintenance' => [
-            'class' => MaintenanceController::class,
-            'roles' => [Permission::PERMISSION_MANAGER_MAINTENANCE]
-        ],
+        // si quieres comandos web específicos para maintenance, puedes crear tu propio controller;
+        // brussens no expone controller web aquí, usa la ruta del módulo: maintenance/default/index
     ],
     'components' => [
         'request' => [
@@ -76,7 +77,6 @@ return [
             'loginUrl' => ['/users/default/login']
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the backend
             'name' => 'advanced-backend'
         ],
         'log' => [
@@ -108,14 +108,14 @@ return [
             ]
         ]
     ],
-    // Последний визит
+    // Último vis it
     'as afterAction' => [
         'class' => LastVisitBehavior::class
     ],
-    // Доступ к админке
+    // Acceso a admin
     'as AccessBehavior' => [
         'class' => AccessBehavior::class,
-        'permission' => Permission::PERMISSION_VIEW_ADMIN_PAGE, // Разрешение доступа к админке
+        'permission' => Permission::PERMISSION_VIEW_ADMIN_PAGE,
     ],
     'params' => $params
 ];

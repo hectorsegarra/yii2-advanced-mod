@@ -7,44 +7,34 @@ use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
 use backend\assets\BootstrapAsset;
 
-/**
- * Class DatePickerAsset
- * @package backend\assets\plugins
- */
+
+
 class DatePickerAsset extends AssetBundle
 {
-    /**
-     * @var string
-     */
-    public static $language;
+    public $sourcePath = '@bower/bootstrap-datepicker';
 
-    /**
-     * @var string
-     */
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/bower_components/bootstrap-datepicker';
+    /** Idioma a cargar (p. ej. 'es', 'fr'...). Lo setéas desde la vista. */
+    public static $language = null;
 
-    /**
-     * @inheritdoc
-     */
+    public $css = [
+        'dist/css/bootstrap-datepicker3.min.css',
+    ];
+
+    public $js = [
+        'dist/js/bootstrap-datepicker.min.js',
+        // el locale se añade dinámicamente en init()
+    ];
+
+    public $depends = [
+        JqueryAsset::class,
+        BootstrapAsset::class,
+    ];
+
     public function init()
     {
         parent::init();
-        $min = YII_ENV_DEV ? '' : '.min';
-        $language = self::$language ?: substr(Yii::$app->language, 0, 2);
-        $this->css = [
-            'dist/css/bootstrap-datepicker3.css'
-        ];
-        $this->js = [
-            'dist/js/bootstrap-datepicker' . $min . '.js',
-            'dist/locales/bootstrap-datepicker.' . $language . '.min.js'
-        ];
+        if (!empty(static::$language)) {
+            $this->js[] = "dist/locales/bootstrap-datepicker." . static::$language . ".min.js";
+        }
     }
-
-    /**
-     * @var array
-     */
-    public $depends = [
-        JqueryAsset::class,
-        BootstrapAsset::class
-    ];
 }

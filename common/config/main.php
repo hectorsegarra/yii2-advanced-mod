@@ -7,8 +7,6 @@ use yii\helpers\ArrayHelper;
 use modules\main\Module as MainModule;
 use modules\users\Module as UserModule;
 use modules\rbac\Module as RbacModule;
-use dominus77\maintenance\interfaces\StateInterface;
-use dominus77\maintenance\states\FileState;
 
 $params = ArrayHelper::merge(
     require __DIR__ . '/params.php',
@@ -21,17 +19,32 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm' => '@vendor/npm-asset'
+        '@npm'   => '@vendor/npm-asset'
     ],
-    'bootstrap' => [],
+    // si quieres mantenimiento también aquí (global), añade 'maintenance' al bootstrap:
+    'bootstrap' => [
+        // 'maintenance',
+    ],
     'container' => [
         'singletons' => [
-            StateInterface::class => [
-                'class' => FileState::class,
+            // Config de estado de mantenimiento (brussens)
+            'brussens\maintenance\states\StateInterface' => [
+                'class' => 'brussens\maintenance\states\FileState',
                 'dateFormat' => 'd-m-Y H:i:s',
-                'directory' => '@frontend/runtime'
-            ]
-        ]
+                'directory'  => '@frontend/runtime',
+            ],
+            'brussens\maintenance\Maintenance' => [
+                'class' => 'brussens\maintenance\Maintenance',
+                'route' => 'maintenance/default/index',
+                'params' => [
+                    'retryAfter' => 300,
+                ],
+                'exceptions' => [
+                    'ip'  => ['127.0.0.1'],
+                    'uri' => ['debug', 'gii'],
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'main' => [
@@ -42,7 +55,11 @@ return [
         ],
         'rbac' => [
             'class' => RbacModule::class
-        ]
+        ],
+        // módulo de mantenimiento (brussens)
+        'maintenance' => [
+            'class' => 'brussens\maintenance\Module',
+        ],
     ],
     'components' => [
         'db' => [

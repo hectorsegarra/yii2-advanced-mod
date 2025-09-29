@@ -6,34 +6,27 @@ use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
 
 /**
- * Class FlotAsset
- *
- * @package backend\widgets\chart\flot\assets
+ * Flot assets desde bower-asset/flot (compatible con AdminLTE v4 / BS5)
  */
 class FlotAsset extends AssetBundle
 {
-    /** @var string */
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/bower_components/Flot';
+    /** Ruta al paquete flot instalado por asset-packagist */
+    public $sourcePath = '@bower/flot';
 
-    /**
-     * @inheritDoc
-     */
-    public function init()
-    {
-        parent::init();
-        $min = YII_ENV_DEV ? '' : '.min';
-        $this->js = [
-            'excanvas' . $min . '.js',
-            'jquery.flot.js',
-            'jquery.flot.pie.js',
-            'jquery.flot.categories.js',
-            'jquery.flot.resize.js'
-        ];
-    }
+    /** Archivos JS de Flot que usas (sin .min: el paquete ya viene sin minificar) */
+    public $js = [
+        'jquery.flot.js',
+        'jquery.flot.pie.js',
+        'jquery.flot.categories.js',
+        'jquery.flot.resize.js',
+        // añade los que necesites:
+        // 'jquery.flot.time.js',
+        // 'jquery.colorhelpers.js',
+        // 'jquery.flot.stack.js',
+        // 'jquery.flot.crosshair.js',
+        // 'jquery.flot.selection.js',
+    ];
 
-    /**
-     * @var string[]
-     */
     public $depends = [
         JqueryAsset::class,
     ];

@@ -285,7 +285,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                 'encodeLabels' => false,
                 'submenuTemplate' => "\n<ul class=\"nav nav-treeview\">\n{items}\n</ul>\n",
                 'activateParents' => true,
-                'openCssClass' => 'menu-open',
+                
                 'items' => $items
             ]);
             ?>
