@@ -1,21 +1,8 @@
 @import "fonts/SourceSansPro/source-sans-pro.css" screen;
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Source Sans Pro Regular", sans-serif;
-}
-
-.sidebar-menu li.active > a > .fa-angle-left > a > .pull-right-container > .fa-angle-left {
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-}
-
-.sidebar-menu .active > a > .pull-right-container > .fa-angle-left {
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
 }
 
 .title-column {
@@ -32,20 +19,13 @@ div.required label:after {
     color: red;
 }
 
-.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
-    font-size: 14px;
-}
-
-.nav-tabs-custom {
-    /*margin-top: 10px;*/
-}
-
-/* Starting with v7.6.0, the font size for .swal2-popup is used, which affects the size of the window itself. */
+/* SweetAlert font sizing */
 .swal2-popup {
     font-size: 1.4rem !important;
 }
 
-button:active, button:focus {
+button:active,
+button:focus {
     outline: none !important;
 }
 
@@ -53,6 +33,60 @@ button::-moz-focus-inner {
     border: 0 !important;
 }
 
-.main-header .sidebar-toggle:before {
-    content: none;
+.app-sidebar .nav-sidebar .nav-link {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.app-sidebar .nav-sidebar .nav-link .nav-icon {
+    width: 1.25rem;
+    text-align: center;
+}
+
+.app-sidebar .nav-sidebar .nav-link .end {
+    margin-left: auto;
+}
+
+.app-sidebar .nav-sidebar .nav-link:hover,
+.app-sidebar .nav-item.active > .nav-link,
+.app-sidebar .nav-item.menu-open > .nav-link,
+.app-sidebar .nav-sidebar .nav-link.active {
+    background-color: rgba(var(--bs-primary-rgb), 0.15);
+    color: var(--bs-primary);
+}
+
+.app-sidebar .nav-treeview .nav-link {
+    padding-left: 2.5rem;
+    font-size: .95rem;
+}
+
+.app-sidebar .nav-header {
+    padding: .75rem 1rem;
+    letter-spacing: .08em;
+}
+
+.app-sidebar .sidebar-user-image {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+}
+
+.app-header .user-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+.app-header .dropdown-menu-lg {
+    min-width: 20rem;
+}
+
+.app-header .dropdown-footer a {
+    font-weight: 500;
+}
+
+.app-page-title small {
+    font-size: 0.75em;
 }

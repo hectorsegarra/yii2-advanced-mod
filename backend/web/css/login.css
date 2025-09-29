@@ -1,12 +1,24 @@
-html, body {
-    height: 0;
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.radio label, .checkbox label {
-    padding-left: 0;
+.login-page .card {
+    border-radius: 1rem;
 }
 
-.login-box-footer {
-    margin-top: 20px;
-    text-align: center;
+.login-page .card-header {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.login-page .card-footer {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.login-page .card .btn {
+    border-radius: 999px;
 }

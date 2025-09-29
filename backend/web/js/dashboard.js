@@ -1,37 +1,34 @@
-// Fix jQuery Ui to Bootstrap Tooltip
 if (bootstrapTooltip && $.fn.tooltip) {
     $.fn.tooltip = bootstrapTooltip;
 }
-// Fix jQuery Ui to Bootstrap Datepicker
-if (bootstrapDatepicker && $.fn.bootstrapDP === undefined) {
-    $.fn.bootstrapDP = bootstrapDatepicker;
-}
 
 $(function () {
+    'use strict';
 
-    "use strict";
+    if ($.fn.sortable) {
+        $('.connectedSortable').sortable({
+            containment: $('.app-content'),
+            placeholder: 'sort-highlight',
+            connectWith: '.connectedSortable',
+            handle: '.card-header, .nav-tabs',
+            forcePlaceholderSize: true,
+            zIndex: 999999
+        });
+        $('.connectedSortable .card-header, .connectedSortable .nav-tabs').css('cursor', 'move');
+    }
 
-    /* jQueryKnob */
-    $('.knob').knob();
+    const initTooltips = () => {
+        const triggers = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        triggers.forEach((trigger) => {
+            if (!bootstrap.Tooltip.getInstance(trigger)) {
+                new bootstrap.Tooltip(trigger);
+            }
+        });
+    };
 
-    // Make the dashboard widgets sortable Using jquery UI
-    $('.connectedSortable').sortable({
-        containment: $('section.content'),
-        placeholder: 'sort-highlight',
-        connectWith: '.connectedSortable',
-        handle: '.box-header, .nav-tabs',
-        forcePlaceholderSize: true,
-        zIndex: 999999
-    });
-    $('.connectedSortable .box-header, .connectedSortable .nav-tabs').css('cursor', 'move');
+    initTooltips();
 
-    $(document).ready(function () {
-        $('.sidebar-menu').tree()
-    });
-
-    // Tooltip
-    $('[data-toggle="tooltip"]').tooltip();
-    $(document).ajaxComplete(function () {
-        $('[data-toggle="tooltip"]').tooltip();
+    $(document).on('ajaxComplete', () => {
+        initTooltips();
     });
 });

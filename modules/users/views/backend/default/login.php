@@ -15,25 +15,38 @@ $this->title = Module::translate('module', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<p class="login-box-msg"><?= Module::translate('module', 'Login to the site to start the session') ?></p>
+<div class="text-center mb-4">
+    <p class="text-body-secondary mb-0">
+        <?= Module::translate('module', 'Login to the site to start the session') ?>
+    </p>
+</div>
 
 <?php $form = ActiveForm::begin([
     'id' => 'login-form'
 ]); ?>
 
-<?= $form->field($model, 'email')->textInput([
-    'placeholder' => Module::translate('module', 'Email')
+<?= $form->field($model, 'email', [
+    'options' => ['class' => 'mb-3'],
+])->textInput([
+    'placeholder' => Module::translate('module', 'Email'),
+    'class' => 'form-control form-control-lg'
 ])->label(false) ?>
 
-<?= $form->field($model, 'password')->passwordInput([
-    'placeholder' => Module::translate('module', 'Password')
+<?= $form->field($model, 'password', [
+    'options' => ['class' => 'mb-3'],
+])->passwordInput([
+    'placeholder' => Module::translate('module', 'Password'),
+    'class' => 'form-control form-control-lg'
 ])->label(false) ?>
 
-<div class="row align-items-center">
-    <div class="col-8">
-        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+<div class="row align-items-center mb-3">
+    <div class="col-7">
+        <?= $form->field($model, 'rememberMe', [
+            'options' => ['class' => 'form-check mb-0'],
+            'template' => "{input}\n{label}\n{error}",
+        ])->checkbox(['class' => 'form-check-input'], false)->label(Module::translate('module', 'Remember Me'), ['class' => 'form-check-label']) ?>
     </div>
-    <div class="col-4">
+    <div class="col-5 text-end">
         <?= Html::submitButton(Module::translate('module', 'Sign In'), [
             'class' => 'btn btn-primary w-100',
             'name' => 'login-button'
