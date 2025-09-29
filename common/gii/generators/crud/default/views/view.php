@@ -24,11 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 YiiAsset::register($this);
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-view">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
+    <div class="card card-primary card-outline shadow-sm">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3 class="card-title mb-0"><?= "<?= " ?>Html::encode($this->title) ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
             <div class="float-end">
                 <p>
                     <?= "<?= " ?>Html::a(
@@ -53,6 +53,9 @@ YiiAsset::register($this);
             </div>
             <?= "<?= " ?>DetailView::widget([
                 'model' => $model,
+                'options' => [
+                    'class' => 'table table-bordered table-hover detail-view align-middle',
+                ],
                 'attributes' => [
                 <?php if (($tableSchema = $generator->getTableSchema()) === false) {
                     echo "\r";

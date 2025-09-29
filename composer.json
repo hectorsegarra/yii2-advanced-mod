@@ -9,9 +9,9 @@
         "source": "https://github.com/Dominus77/yii2-advanced-start"
     },
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.4",
         "ext-json": "*",
-        "almasaeed2010/adminlte": "^4.0",
+        "almasaeed2010/adminlte": "^4.3",
         "bower-asset/chart.js": "^2.9",
         "bower-asset/html5shiv": "^3.7",
         "bower-asset/respond": "^1.4",
@@ -23,7 +23,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "yii2tech/ar-softdelete": "~1.0",
         "yiisoft/yii2": "~2.0.14",
-        "yiisoft/yii2-apidoc": "~2.1.0",
+        "yiisoft/yii2-apidoc": "^2.2",
         "yiisoft/yii2-bootstrap5": "^2.0",
         "yiisoft/yii2-imagine": "^2.0",
         "yiisoft/yii2-jui": "^2.0",
@@ -42,7 +42,7 @@
         "symfony/browser-kit": ">=2.7 <=4.2.4",
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "yiisoft/yii2-gii": "~2.0.0"
+        "yiisoft/yii2-gii": "^2.2"
     },
     "scripts": {
         "app-init-dev": "php init --env=Development --overwrite=n",

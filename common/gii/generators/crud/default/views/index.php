@@ -27,13 +27,13 @@ $this->title = <?= $generator->generateString(Inflector::pluralize(Inflector::ca
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
-            <div class="box-tools float-end"></div>
+    <div class="card card-primary card-outline shadow-sm">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3 class="card-title mb-0"><?= "<?= " ?>Html::encode($this->title) ?></h3>
+            <div class="card-tools"></div>
         </div>
 <?= $generator->enablePjax ? "        <?php Pjax::begin(); ?>\n" : '' ?>
-        <div class="box-body">
+        <div class="card-body">
             <?php if (!empty($generator->searchModelClass)) : ?>
 <?= "<?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
             <?php endif; ?>
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'defaultPageSize' => 25,
                     'sizes' => [10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50, 100 => 100, 200 => 200],
                     'options' => [
-                        'class' => 'form-control'
+                        'class' => 'form-select form-select-sm'
                     ]
                 ])<?= " ?>\r" ?>
             </div>
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="float-end">
                 <p>
                     <?= "<?= " ?>Html::a('<span class="fa fa-plus"></span>', ['create'], [
-                        'class' => 'btn btn-block btn-success',
+                        'class' => 'btn btn-success w-100',
                         'title' => 'Create',
                         'data' => [
                             'toggle' => 'tooltip',
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }?>
                 'layout' => "{items}",
                 'tableOptions' => [
-                    'class' => 'table table-bordered table-hover',
+                    'class' => 'table table-bordered table-hover align-middle',
                 ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
@@ -117,12 +117,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php endif; ?>
         </div>
         <?php if ($generator->indexWidgetType === 'grid') : ?>
-<div class="box-footer">
+        <div class="card-footer">
             <?= "<?= " ?>LinkPager::widget([
                 'pagination' => $dataProvider->pagination,
                 'registerLinkTags' => true,
                 'options' => [
-                    'class' => 'pagination pagination-sm no-margin float-end',
+                    'class' => 'pagination pagination-sm justify-content-end mb-0',
                 ]
             ])<?= " ?>\r"?>
         </div>

@@ -15,13 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= '?>' ?>
 
 <div class="<?= $moduleName ?>-backend-default-index">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= '<?= Html::encode($this->title) ?>' ?></h3>
+    <div class="card card-primary card-outline shadow-sm">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3 class="card-title mb-0"><?= '<?= Html::encode($this->title) ?>' ?></h3>
 
-            <div class="box-tools float-end"></div>
+            <div class="card-tools"></div>
         </div>
-        <div class="box-body">
+        <div class="card-body">
             <div class="float-start"></div>
             <div class="float-end"></div>
             <p>
@@ -30,6 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
             <code><?= '<?= __FILE__ ?>' ?></code>
         </div>
-        <div class="box-footer"></div>
+        <div class="card-footer"></div>
     </div>
 </div>
