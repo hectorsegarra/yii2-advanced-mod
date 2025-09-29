@@ -142,24 +142,44 @@ class Chart extends Widget
                 if (realtime_{$this->id} === '{$on}') {
                     update_{$this->id}();
                 }
-                
-                // REALTIME TOGGLE                
-                btnRealtime_{$this->id}.click(function () {                
-                    btnRealtime_{$this->id}.addClass('btn-default');
-                    $(this).removeClass('btn-default');                
+
+                btnRealtime_{$this->id}
+                    .removeClass('btn-outline-success btn-outline-danger active')
+                    .addClass('btn-outline-secondary');
+
+                btnRealtime_{$this->id}.each(function () {
+                    if ($(this).data('toggle') === realtime_{$this->id}) {
+                        const stateClass = (realtime_{$this->id} === '{$on}') ? 'btn-outline-success' : 'btn-outline-danger';
+                        $(this)
+                            .removeClass('btn-outline-secondary')
+                            .addClass(stateClass)
+                            .addClass('active');
+                    }
+                });
+
+                // REALTIME TOGGLE
+                btnRealtime_{$this->id}.click(function () {
+                    btnRealtime_{$this->id}
+                        .addClass('btn-outline-secondary')
+                        .removeClass('btn-outline-success btn-outline-danger active');
+                    $(this).removeClass('btn-outline-secondary').addClass('active');
                     if ($(this).data('toggle') === '{$on}') {
-                        if(realtime_{$this->id} !== '{$on}') {
+                        if (realtime_{$this->id} !== '{$on}') {
                             realtime_{$this->id} = '{$on}';
-                            btnRealtime_{$this->id}.removeClass('btn-danger');                        
-                            $(this).addClass('btn-success');
+                            btnRealtime_{$this->id}.removeClass('btn-outline-danger');
+                            $(this).addClass('btn-outline-success');
                             update_{$this->id}();
-                        }                                    
+                        } else {
+                            $(this).addClass('btn-outline-success');
+                        }
                     } else {
-                        if(realtime_{$this->id} !== '{$off}') {
-                            realtime_{$this->id} = '{$off}'; 
-                            btnRealtime_{$this->id}.removeClass('btn-success');                        
-                            $(this).addClass('btn-danger');
+                        if (realtime_{$this->id} !== '{$off}') {
+                            realtime_{$this->id} = '{$off}';
+                            btnRealtime_{$this->id}.removeClass('btn-outline-success');
+                            $(this).addClass('btn-outline-danger');
                             update_{$this->id}();
+                        } else {
+                            $(this).addClass('btn-outline-danger');
                         }
                     }
                 });
