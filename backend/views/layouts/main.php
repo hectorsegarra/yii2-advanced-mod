@@ -63,7 +63,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->head() ?>
 </head>
-<body class="layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary">
+<body class="layout-fixed sidebar-expand-lg sidebar-mini layout-navbar-fixed layout-footer-fixed bg-body-tertiary" data-bs-theme="light">
 <?php $this->beginBody() ?>
 
 <a class="visually-hidden-focusable" href="#main-content">
@@ -71,19 +71,24 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
 </a>
 
 <div class="app-wrapper d-flex flex-column min-vh-100">
-    <nav class="app-header navbar navbar-expand bg-body border-bottom shadow-sm" role="navigation" aria-label="<?= Yii::t('app', 'Primary navigation') ?>">
+    <nav class="app-header navbar navbar-expand-lg bg-body border-bottom shadow-sm sticky-top" role="navigation" aria-label="<?= Yii::t('app', 'Primary navigation') ?>">
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <button type="button" class="btn btn-link nav-link" data-lte-toggle="sidebar" aria-controls="app-sidebar" aria-expanded="false" aria-label="<?= Yii::t('app', 'Toggle sidebar') ?>">
+                    <button type="button" class="btn btn-outline-primary btn-icon rounded-circle shadow-sm" data-lte-toggle="sidebar" aria-controls="app-sidebar" aria-expanded="false" aria-label="<?= Yii::t('app', 'Toggle sidebar') ?>">
                         <i class="fas fa-bars"></i>
                     </button>
                 </li>
             </ul>
-            <a href="<?= $homeUrl ?>" class="navbar-brand ms-3 d-none d-md-inline-flex align-items-center">
-                <span class="fw-semibold"><?= Html::encode(Yii::$app->name) ?></span>
+            <a href="<?= $homeUrl ?>" class="navbar-brand ms-3 d-flex align-items-center gap-2">
+                <span class="brand-logo d-inline-flex align-items-center justify-content-center rounded-3 bg-primary-subtle text-primary">
+                    <i class="fas fa-layers"></i>
+                </span>
+                <span class="fw-semibold text-truncate">
+                    <?= Html::encode(Yii::$app->name) ?>
+                </span>
             </a>
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto align-items-center gap-2">
                 <?= MessagesWidget::widget([
                     'status' => true,
                     'image' => $publishedUrl ? Html::img($publishedUrl . '/img/user2-160x160.jpg', [
@@ -94,7 +99,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                 <?= NotificationsWidget::widget(['status' => true]) ?>
                 <?= TasksWidget::widget(['status' => true]) ?>
                 <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" role="button">
                         <?= AvatarWidget::widget([
                             'user_id' => $user->id,
                             'imageOptions' => [
@@ -103,33 +108,33 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                         ]) ?>
                         <span class="d-none d-md-inline fw-semibold"><?= $fullUserName ?></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-0">
-                        <div class="bg-primary text-white text-center p-3">
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-0 overflow-hidden shadow-lg rounded-3 border-0">
+                        <div class="bg-primary text-white text-center p-4">
                             <?= AvatarWidget::widget([
                                 'user_id' => $user->id,
                                 'imageOptions' => [
-                                    'class' => 'rounded-circle mb-2'
+                                    'class' => 'rounded-circle mb-3 border border-3 border-white shadow-sm'
                                 ]
                             ]) ?>
-                            <p class="mb-0 fw-semibold"><?= $fullUserName ?></p>
-                            <small class="text-white-50">
+                            <p class="mb-1 fw-semibold"><?= $fullUserName ?></p>
+                            <small class="text-white-50 d-block">
                                 <?= UserModule::translate('module', 'Member since') . ' ' . $formatter->asDatetime($identity->created_at, 'LLL yyyy') // phpcs:ignore ?>
                             </small>
                         </div>
-                        <div class="px-3 py-2 border-bottom">
-                            <div class="d-flex justify-content-around text-center">
-                                <a href="#" class="text-decoration-none small">
+                        <div class="px-3 py-3 border-bottom bg-body-tertiary">
+                            <div class="d-flex justify-content-around text-center gap-2">
+                                <a href="#" class="quick-link text-decoration-none small text-uppercase fw-semibold">
                                     <?= Yii::t('app', 'Followers') ?>
                                 </a>
-                                <a href="#" class="text-decoration-none small">
+                                <a href="#" class="quick-link text-decoration-none small text-uppercase fw-semibold">
                                     <?= Yii::t('app', 'Sales') ?>
                                 </a>
-                                <a href="#" class="text-decoration-none small">
+                                <a href="#" class="quick-link text-decoration-none small text-uppercase fw-semibold">
                                     <?= Yii::t('app', 'Friends') ?>
                                 </a>
                             </div>
                         </div>
-                        <div class="px-3 py-3">
+                        <div class="px-3 py-3 bg-body">
                             <div class="d-flex justify-content-between gap-2">
                                 <a href="<?= Url::to(['/users/profile/index']) ?>" class="btn btn-outline-primary flex-fill">
                                     <?= UserModule::translate('module', 'Profile') ?>
@@ -144,7 +149,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     </div>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-link nav-link" data-bs-toggle="offcanvas" data-bs-target="#app-control-sidebar" aria-controls="app-control-sidebar">
+                    <button type="button" class="btn btn-outline-secondary btn-icon rounded-circle shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#app-control-sidebar" aria-controls="app-control-sidebar">
                         <i class="fas fa-sliders-h"></i>
                         <span class="visually-hidden"><?= Yii::t('app', 'Toggle settings panel') ?></span>
                     </button>
@@ -156,12 +161,16 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
     <aside class="app-sidebar bg-body-secondary shadow" id="app-sidebar" data-bs-theme="dark" aria-label="<?= Yii::t('app', 'Sidebar menu') ?>">
         <div class="app-sidebar-content h-100 d-flex flex-column">
             <div class="app-sidebar-header d-flex align-items-center justify-content-between px-3 py-3 border-bottom border-dark-subtle">
-                <a href="<?= $homeUrl ?>" class="app-sidebar-brand text-decoration-none text-white fw-semibold d-flex align-items-center gap-2">
-                    <i class="fas fa-layers"></i>
-                    <span><?= Html::encode(Yii::$app->name) ?></span>
+                <a href="<?= $homeUrl ?>" class="app-sidebar-brand text-decoration-none text-white fw-semibold d-flex align-items-center gap-3">
+                    <span class="brand-logo d-inline-flex align-items-center justify-content-center rounded-4">
+                        <i class="fas fa-layers"></i>
+                    </span>
+                    <span class="brand-title text-uppercase small">
+                        <?= Html::encode(Yii::$app->name) ?>
+                    </span>
                 </a>
-                <button class="btn btn-link text-white" data-lte-toggle="sidebar" aria-controls="app-sidebar" aria-expanded="true" aria-label="<?= Yii::t('app', 'Close sidebar') ?>">
-                    <i class="fas fa-times"></i>
+                <button class="btn btn-outline-light btn-icon rounded-circle" data-lte-toggle="sidebar" aria-controls="app-sidebar" aria-expanded="true" aria-label="<?= Yii::t('app', 'Close sidebar') ?>">
+                    <i class="fas fa-xmark"></i>
                 </button>
             </div>
             <div class="app-sidebar-body flex-grow-1 px-3 py-4" id="sidebar-menu">
@@ -313,7 +322,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
     <div class="app-sidebar-overlay" data-lte-toggle="sidebar" aria-hidden="true"></div>
 
     <main class="app-main" id="main-content">
-        <div class="app-content-header border-bottom">
+        <div class="app-content-header border-bottom bg-body">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
