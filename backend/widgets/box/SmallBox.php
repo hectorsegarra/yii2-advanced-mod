@@ -78,26 +78,40 @@ class SmallBox extends Widget
      */
     public function renderContent()
     {
-        $str = '';
-        $str .= Html::beginTag('div', ['id' => $this->id, 'class' => 'small-box ' . $this->style]) . PHP_EOL;
-        $str .= Html::beginTag('div', ['class' => 'inner']) . PHP_EOL;
-        $str .= Html::tag('h3', $this->header) . PHP_EOL;
-        $str .= Html::tag('p', $this->content) . PHP_EOL;
-        $str .= Html::endTag('div') . PHP_EOL;
-        $str .= Html::beginTag('div', ['icon']) . PHP_EOL;
-        $str .= Html::tag('i', '', ['class' => 'icon ' . $this->icon]) . PHP_EOL;
-        $str .= Html::endTag('div') . PHP_EOL;
+        $options = [
+            'id' => $this->id,
+            'class' => trim('stat-card ' . $this->style),
+        ];
+
+        $content = Html::beginTag('div', ['class' => 'stat-card-body']) . PHP_EOL;
+        $content .= Html::beginTag('div', ['class' => 'stat-card-meta']) . PHP_EOL;
+        $content .= Html::tag('div', $this->content, ['class' => 'stat-card-label text-uppercase small fw-semibold']) . PHP_EOL;
+        $content .= Html::tag('div', $this->header, ['class' => 'stat-card-value']) . PHP_EOL;
+        $content .= Html::endTag('div') . PHP_EOL;
+        $content .= Html::tag('span', Html::tag('i', '', ['class' => 'icon ' . $this->icon]), ['class' => 'stat-card-icon']) . PHP_EOL;
+        $content .= Html::endTag('div') . PHP_EOL;
+
+        $footer = '';
         if (is_array($this->link)) {
             if (!empty($this->link['label']) && !empty($this->link['url'])) {
-                $str .= Html::a($this->link['label'], $this->link['url'], [
-                        'class' => 'small-box-footer'
-                    ]) . PHP_EOL;
+                $label = Html::encode($this->link['label']) . ' <i class="fas fa-arrow-right ms-2"></i>';
+                $footer = Html::tag(
+                    'div',
+                    Html::a(
+                        $label,
+                        $this->link['url'],
+                        [
+                            'class' => 'stat-card-link',
+                        ]
+                    ),
+                    ['class' => 'stat-card-footer']
+                );
             }
-        } elseif (!is_null($this->link)) {
-            $str .= Html::tag('div', $this->link, ['class' => 'small-box-footer']);
+        } elseif ($this->link !== null) {
+            $footer = Html::tag('div', $this->link, ['class' => 'stat-card-footer']);
         }
-        $str .= Html::endTag('div') . PHP_EOL;
-        return $str;
+
+        return Html::tag('div', $content . $footer, $options) . PHP_EOL;
     }
 
     /**
