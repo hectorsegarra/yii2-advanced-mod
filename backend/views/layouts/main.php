@@ -75,7 +75,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <button type="button" class="btn btn-link nav-link" data-lte-toggle="sidebar" aria-label="<?= Yii::t('app', 'Toggle sidebar') ?>">
+                    <button type="button" class="btn btn-link nav-link" data-lte-toggle="sidebar" aria-controls="app-sidebar" aria-expanded="false" aria-label="<?= Yii::t('app', 'Toggle sidebar') ?>">
                         <i class="fas fa-bars"></i>
                     </button>
                 </li>
@@ -153,35 +153,38 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
         </div>
     </nav>
 
-    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark" aria-label="<?= Yii::t('app', 'Sidebar menu') ?>">
-        <div class="app-sidebar-header d-flex align-items-center justify-content-between px-3 py-2">
-            <a href="<?= $homeUrl ?>" class="app-sidebar-brand text-decoration-none text-white fw-semibold">
-                <span><?= Html::encode(Yii::$app->name) ?></span>
-            </a>
-            <button class="btn btn-link text-white" data-lte-toggle="sidebar" aria-label="<?= Yii::t('app', 'Close sidebar') ?>">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="app-sidebar-body px-3 pb-3" id="sidebar-menu">
-            <div class="d-flex align-items-center mb-3">
-                <div class="me-2">
-                    <?= AvatarWidget::widget([
-                        'user_id' => $user->id,
-                        'imageOptions' => [
-                            'class' => 'rounded-circle sidebar-user-image'
-                        ]
-                    ]) ?>
-                </div>
-                <div>
-                    <p class="mb-0 fw-semibold text-white"><?= $fullUserName ?></p>
-                    <span class="text-success small"><i class="fas fa-circle me-1"></i><?= Yii::t('app', 'Online') ?></span>
-                </div>
+    <aside class="app-sidebar bg-body-secondary shadow" id="app-sidebar" data-bs-theme="dark" aria-label="<?= Yii::t('app', 'Sidebar menu') ?>">
+        <div class="app-sidebar-content h-100 d-flex flex-column">
+            <div class="app-sidebar-header d-flex align-items-center justify-content-between px-3 py-3 border-bottom border-dark-subtle">
+                <a href="<?= $homeUrl ?>" class="app-sidebar-brand text-decoration-none text-white fw-semibold d-flex align-items-center gap-2">
+                    <i class="fas fa-layers"></i>
+                    <span><?= Html::encode(Yii::$app->name) ?></span>
+                </a>
+                <button class="btn btn-link text-white" data-lte-toggle="sidebar" aria-controls="app-sidebar" aria-expanded="true" aria-label="<?= Yii::t('app', 'Close sidebar') ?>">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
+            <div class="app-sidebar-body flex-grow-1 px-3 py-4" id="sidebar-menu">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="me-2">
+                        <?= AvatarWidget::widget([
+                            'user_id' => $user->id,
+                            'imageOptions' => [
+                                'class' => 'rounded-circle sidebar-user-image'
+                            ]
+                        ]) ?>
+                    </div>
+                    <div class="text-white">
+                        <p class="mb-0 fw-semibold"><?= $fullUserName ?></p>
+                        <span class="text-success small"><i class="fas fa-circle me-1"></i><?= Yii::t('app', 'Online') ?></span>
+                    </div>
+                </div>
 
-            <?= SearchSidebar::widget(['status' => true]) ?>
+                <?= SearchSidebar::widget(['status' => true]) ?>
 
-            <?php
-            $items = [
+                <nav class="app-sidebar-menu" aria-label="<?= Yii::t('app', 'Sidebar navigation') ?>">
+                    <?php
+                    $items = [
                 [
                     'label' => Yii::t('app', 'HEADER'),
                     'options' => ['class' => 'nav-header text-uppercase text-muted small']
@@ -279,26 +282,35 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     ]
                 ]
             ];
-            echo \yii\widgets\Menu::widget([
-                'options' => [
-                    'class' => 'nav nav-pills nav-sidebar flex-column',
-                    'data-lte-toggle' => 'treeview',
-                    'role' => 'menu',
-                    'data-accordion' => 'false'
-                ],
-                'itemOptions' => ['class' => 'nav-item'],
-                'linkTemplate' => '<a href="{url}" class="nav-link">{label}</a>', // deja solo esto
-                // 'activeLinkTemplate' => '<a href="{url}" class="nav-link active">{label}</a>', // <- QUITAR
-                'encodeLabels' => false,
-                'submenuTemplate' => "\n<ul class=\"nav nav-treeview\" role=\"menu\">\n{items}\n</ul>\n",
-                'activateParents' => true,
-                'activeCssClass' => 'active',  // Yii pondrá 'active' en el <li>
-                'items' => $items
-            ]);
-
-            ?>
+                    echo \yii\widgets\Menu::widget([
+                        'options' => [
+                            'class' => 'nav nav-pills nav-sidebar flex-column gap-1',
+                            'data-lte-toggle' => 'treeview',
+                            'role' => 'menu',
+                            'id' => 'app-sidebar-menu-list',
+                            'aria-multiselectable' => 'true',
+                            'data-accordion' => 'false'
+                        ],
+                        'itemOptions' => ['class' => 'nav-item'],
+                        'linkTemplate' => '<a href="{url}" class="nav-link">{label}</a>',
+                        'encodeLabels' => false,
+                        'submenuTemplate' => "\n<ul class=\"nav nav-treeview\" role=\"group\">\n{items}\n</ul>\n",
+                        'activateParents' => true,
+                        'activeCssClass' => 'active',
+                        'items' => $items
+                    ]);
+                    ?>
+                </nav>
+            </div>
+            <div class="app-sidebar-footer px-3 py-3 border-top border-dark-subtle text-white-50 small">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span><?= Yii::t('app', 'Logged in as') ?></span>
+                    <span class="fw-semibold text-white"><?= Html::encode($identity ? $identity->username : Yii::t('app', 'Guest')) ?></span>
+                </div>
+            </div>
         </div>
     </aside>
+    <div class="app-sidebar-overlay" data-lte-toggle="sidebar" aria-hidden="true"></div>
 
     <main class="app-main" id="main-content">
         <div class="app-content-header border-bottom">
