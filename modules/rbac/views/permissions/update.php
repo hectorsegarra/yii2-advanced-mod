@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Update');
             ]) ?>
         </div>
         <div class="box-footer">
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::submitButton(
-                    '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> ' . Module::translate(
+                    '<span class="fas fa-check" aria-hidden="true"></span> ' . Module::translate(
                         'module',
                         'Save'
                     ),

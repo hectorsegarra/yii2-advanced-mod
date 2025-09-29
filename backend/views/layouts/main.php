@@ -134,13 +134,13 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                             </li>
 
                             <li class="user-footer">
-                                <div class="pull-left">
+                                <div class="float-start">
                                     <a href="<?= Url::to(['/users/profile/index']) ?>"
                                        class="btn btn-default btn-flat">
                                         <?= UserModule::translate('module', 'Profile') ?>
                                     </a>
                                 </div>
-                                <div class="pull-right">
+                                <div class="float-end">
                                     <?= Html::beginForm(['/users/default/logout'])
                                     . Html::submitButton(UserModule::translate('module', 'Sign Out'), [
                                         'class' => 'btn btn-default btn-flat logout'
@@ -162,12 +162,12 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
         <section class="sidebar">
 
             <div class="user-panel">
-                <div class="pull-left image">
+                <div class="float-start image">
                     <?= AvatarWidget::widget([
                         'user_id' => $user->id
                     ]) ?>
                 </div>
-                <div class="pull-left info">
+                <div class="float-start info">
                     <p><?= $fullUserName ?></p>
                     <a href="#">
                         <i class="fas fa-circle text-success"></i> <?= Yii::t('app', 'Online') ?>
@@ -314,7 +314,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
 
     <footer class="main-footer">
 
-        <div class="pull-right hidden-xs">
+        <div class="float-end hidden-xs">
 
         </div>
         <strong>&copy; <?= date('Y') ?> <a

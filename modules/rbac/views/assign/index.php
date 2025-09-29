@@ -24,10 +24,10 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Assign');
         <div class="box-header with-border">
             <h3 class="box-title"><?= Module::translate('module', 'Assign') ?></h3>
 
-            <div class="box-tools pull-right"></div>
+            <div class="box-tools float-end"></div>
         </div>
         <div class="box-body">
-            <div class="pull-left">
+            <div class="float-start">
                 <?= common\widgets\PageSize::widget([
                     'label' => '',
                     'defaultPageSize' => 25,
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Assign');
                     ]
                 ]) ?>
             </div>
-            <div class="pull-right"></div>
+            <div class="float-end"></div>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'layout' => '{items}',
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Assign');
                         'template' => '{view} {update} {revoke}',
                         'buttons' => [
                             'view' => static function ($url) {
-                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                                return Html::a('<span class="fas fa-eye"></span>', $url, [
                                     'title' => Module::translate('module', 'View'),
                                     'data' => [
                                         'toggle' => 'tooltip',
@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Assign');
                                 ]);
                             },
                             'update' => static function ($url) {
-                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                return Html::a('<span class="fas fa-pen"></span>', $url, [
                                     'title' => Module::translate('module', 'Update'),
                                     'data' => [
                                         'toggle' => 'tooltip',
@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Assign');
                                     ];
                                 }
                                 return Html::a(
-                                    '<span class="glyphicon glyphicon-remove"></span>',
+                                    '<span class="fas fa-times"></span>',
                                     $url,
                                     ArrayHelper::merge(
                                         [
@@ -125,7 +125,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Assign');
                 'pagination' => $dataProvider->pagination,
                 'registerLinkTags' => true,
                 'options' => [
-                    'class' => 'pagination pagination-sm no-margin pull-right',
+                    'class' => 'pagination pagination-sm no-margin float-end',
                 ]
             ]) ?>
         </div>

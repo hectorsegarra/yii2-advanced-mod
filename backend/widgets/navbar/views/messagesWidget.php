@@ -19,7 +19,7 @@ use yii\web\View;
             <ul class="menu">
                 <li>
                     <a href="#">
-                        <div class="pull-left">
+                        <div class="float-start">
                             <?= $image ?>
                         </div>
                         <h4>

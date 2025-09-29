@@ -1,13 +1,13 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 use modules\users\models\LoginForm;
 
 /**
  * @var $this yii\web\View
- * @var $form yii\bootstrap\ActiveForm
+ * @var $form yii\bootstrap5\ActiveForm
  * @var $model LoginForm
  */
 
@@ -36,16 +36,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-            <div class="form-group text-muted">
+            <div class="mb-3 text-muted">
                 <?= Module::translate('module', 'If you have forgotten your password, use {:Link}', [
                     ':Link' => Html::a(Module::translate('module', 'form of discharge'), [
                         'default/request-password-reset'
                     ])
                 ]) . '.'; ?>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::submitButton(
-                    '<span class="glyphicon glyphicon-log-in"></span> ' . Module::translate(
+                    '<span class="fas fa-sign-in-alt"></span> ' . Module::translate(
                         'module',
                         'Sign In'
                     ),

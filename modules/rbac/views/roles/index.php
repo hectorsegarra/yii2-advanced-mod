@@ -17,10 +17,10 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Roles');
         <div class="box-header with-border">
             <h3 class="box-title"><?= Module::translate('module', 'Roles') ?></h3>
 
-            <div class="box-tools pull-right"></div>
+            <div class="box-tools float-end"></div>
         </div>
         <div class="box-body">
-            <div class="pull-left">
+            <div class="float-start">
                 <?= common\widgets\PageSize::widget([
                     'label' => '',
                     'defaultPageSize' => 25,
@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Roles');
                     ]
                 ]) ?>
             </div>
-            <div class="pull-right">
+            <div class="float-end">
                 <p>
                     <?= Html::a('<span class="fa fa-plus"></span> ', ['create'], [
-                        'class' => 'btn btn-block btn-success',
+                        'class' => 'btn w-100 btn-success',
                         'title' => Module::translate('module', 'Create Role'),
                         'data' => [
                             'toggle' => 'tooltip',
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Roles');
                 'pagination' => $dataProvider->pagination,
                 'registerLinkTags' => true,
                 'options' => [
-                    'class' => 'pagination pagination-sm no-margin pull-right',
+                    'class' => 'pagination pagination-sm no-margin float-end',
                 ]
             ]) ?>
         </div>

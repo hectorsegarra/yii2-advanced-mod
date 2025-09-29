@@ -3,7 +3,7 @@
 namespace modules\users\widgets;
 
 use yii\base\Widget;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use modules\users\models\UploadForm;
@@ -56,7 +56,7 @@ class UploadAvatarForm extends Widget
             ]
         ]);
         echo $form->field($this->model, 'imageFile')->fileInput();
-        echo Html::submitButton('<span class="fa fa-upload"></span> ' . Module::translate('module', 'Submit'), [
+        echo Html::submitButton('<span class="fas fa-upload"></span> ' . Module::translate('module', 'Submit'), [
             'class' => 'btn btn-primary',
             'name' => 'submit-button',
         ]);

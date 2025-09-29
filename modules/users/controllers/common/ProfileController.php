@@ -7,7 +7,7 @@ use yii\base\Exception;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use modules\users\models\UploadForm;

@@ -2,7 +2,6 @@
 
 use yii\web\UrlManager;
 use yii\log\FileTarget;
-use yii\bootstrap\BootstrapAsset;
 use yii\helpers\ArrayHelper;
 use modules\users\models\User;
 use modules\users\behavior\LastVisitBehavior;
@@ -23,32 +22,6 @@ $params = ArrayHelper::merge(
     require __DIR__ . '/params.php',
     require __DIR__ . '/params-local.php'
 );
-
-/**
- * This CSS Themes Bootstrap
- * ------------
- * cerulean
- * cosmo
- * cyborg
- * darkly
- * default
- * flatly
- * journal
- * lumen
- * paper
- * readable
- * sandstone
- * simplex
- * slate
- * spacelab
- * superhero
- * united
- * yeti
- * ------------
- * @package /frontend/assets/bootstrap
- * @var string
- */
-$css_theme = 'default';
 
 return [
     'id' => 'app-frontend',
@@ -104,16 +77,6 @@ return [
             'cookieValidationKey' => '',
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => ''
-        ],
-        'assetManager' => [
-            'bundles' => [
-                BootstrapAsset::class => [
-                    'sourcePath' => '@frontend/assets/bootstrap',
-                    'css' => [
-                        YII_ENV_DEV ? $css_theme . '/bootstrap.css' : $css_theme . '/bootstrap.min.css'
-                    ]
-                ]
-            ]
         ],
         'user' => [
             'identityClass' => User::class,

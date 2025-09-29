@@ -8,9 +8,9 @@
 namespace common\widgets;
 
 use Yii;
-use yii\bootstrap\Widget;
+use yii\bootstrap5\Widget;
 use Exception;
-use yii\bootstrap\Alert as BootstrapAlert;
+use yii\bootstrap5\Alert as BootstrapAlert;
 
 /**
  * Alert widget renders a message from session flash. All flash messages are displayed

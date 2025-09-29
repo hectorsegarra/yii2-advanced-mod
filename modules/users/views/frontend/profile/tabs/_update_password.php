@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /**
@@ -35,7 +35,7 @@ use modules\users\Module;
             'placeholder' => true,
         ]) ?>
 
-        <div class="form-group">
+        <div class="mb-3">
             <?= Html::submitButton('<span class="fas fa-save"></span> ' . Module::translate('module', 'Save'), [
                 'class' => 'btn btn-primary',
                 'name' => 'submit-button',

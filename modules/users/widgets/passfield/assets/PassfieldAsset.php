@@ -49,7 +49,7 @@ class PassfieldAsset extends AssetBundle
      */
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
+        'yii\bootstrap5\BootstrapPluginAsset',
         'common\assets\FontAwesomeAsset',
         'common\assets\IonIconsAsset',
     ];

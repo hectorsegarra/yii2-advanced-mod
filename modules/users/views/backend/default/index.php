@@ -60,7 +60,7 @@ $this->registerJs($js, View::POS_END);
         <div class="box-header with-border">
             <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
 
-            <div class="box-tools pull-right"></div>
+            <div class="box-tools float-end"></div>
         </div>
         <?php Pjax::begin([
             'id' => 'pjax-container',
@@ -68,7 +68,7 @@ $this->registerJs($js, View::POS_END);
             'timeout' => 5000,
         ]); ?>
         <div class="box-body">
-            <div class="pull-left">
+            <div class="float-start">
                 <?= common\widgets\PageSize::widget([
                     'label' => '',
                     'defaultPageSize' => 25,
@@ -78,10 +78,10 @@ $this->registerJs($js, View::POS_END);
                     ]
                 ]) ?>
             </div>
-            <div class="pull-right">
+            <div class="float-end">
                 <p>
                     <?= Html::a('<span class="fa fa-plus"></span> ', ['create'], [
-                        'class' => 'btn btn-block btn-success',
+                        'class' => 'btn w-100 btn-success',
                         'title' => Module::translate('module', 'Create'),
                         'data' => [
                             'toggle' => 'tooltip',
@@ -215,7 +215,7 @@ $this->registerJs($js, View::POS_END);
                     ],
                     [
                         'attribute' => 'profile.last_visit',
-                        'filter' => '<div class="form-group"><div class="input-group date"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>' // phpcs:ignore
+                        'filter' => '<div class="mb-3"><div class="input-group date"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>' // phpcs:ignore
                             . Html::activeInput('text', $searchModel, 'date_from', [
                                 'id' => 'datepicker',
                                 'class' => 'form-control',
@@ -238,7 +238,7 @@ $this->registerJs($js, View::POS_END);
                         'buttons' => [
                             'view' => function ($url) {
                                 return Html::a(
-                                    '<span class="glyphicon glyphicon-eye-open"></span>',
+                                    '<span class="fas fa-eye"></span>',
                                     $url,
                                     [
                                         'title' => Module::translate('module', 'View'),
@@ -250,7 +250,7 @@ $this->registerJs($js, View::POS_END);
                                 );
                             },
                             'update' => function ($url) {
-                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                return Html::a('<span class="fas fa-pen"></span>', $url, [
                                     'title' => Module::translate('module', 'Update'),
                                     'data' => [
                                         'toggle' => 'tooltip',
@@ -290,7 +290,7 @@ $this->registerJs($js, View::POS_END);
                                     ];
                                 }
                                 return Html::a(
-                                    '<span class="glyphicon glyphicon-trash"></span>',
+                                    '<span class="fas fa-trash"></span>',
                                     $url,
                                     $linkOptions
                                 );
@@ -305,7 +305,7 @@ $this->registerJs($js, View::POS_END);
                 'pagination' => $dataProvider->pagination,
                 'registerLinkTags' => true,
                 'options' => [
-                    'class' => 'pagination pagination-sm no-margin pull-right',
+                    'class' => 'pagination pagination-sm no-margin float-end',
                 ]
             ]) ?>
         </div>

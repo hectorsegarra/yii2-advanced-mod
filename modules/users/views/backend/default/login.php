@@ -1,13 +1,13 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\models\LoginForm;
 use modules\users\Module;
 
 /**
  * @var $this yii\web\View
- * @var $form yii\bootstrap\ActiveForm
+ * @var $form yii\bootstrap5\ActiveForm
  * @var $model LoginForm
  */
 
@@ -21,29 +21,21 @@ $this->params['breadcrumbs'][] = $this->title;
     'id' => 'login-form'
 ]); ?>
 
-<div class="form-group has-feedback">
-    <?= $form->field($model, 'email')->textInput([
-        'class' => 'form-control',
-        'placeholder' => Module::translate('module', 'Email')
-    ])->label(false) ?>
-    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-</div>
-<div class="form-group has-feedback">
-    <?= $form->field($model, 'password')->passwordInput([
-        'class' => 'form-control',
-        'placeholder' => Module::translate('module', 'Password')
-    ])->label(false) ?>
-    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-</div>
-<div class="row">
-    <div class="col-xs-8">
-        <div class="checkbox icheck">
-            <?= $form->field($model, 'rememberMe')->checkbox(['class' => 'iCheck']) ?>
-        </div>
+<?= $form->field($model, 'email')->textInput([
+    'placeholder' => Module::translate('module', 'Email')
+])->label(false) ?>
+
+<?= $form->field($model, 'password')->passwordInput([
+    'placeholder' => Module::translate('module', 'Password')
+])->label(false) ?>
+
+<div class="row align-items-center">
+    <div class="col-8">
+        <?= $form->field($model, 'rememberMe')->checkbox() ?>
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
         <?= Html::submitButton(Module::translate('module', 'Sign In'), [
-            'class' => 'btn btn-primary btn-block btn-flat',
+            'class' => 'btn btn-primary w-100',
             'name' => 'login-button'
         ]) ?>
     </div>

@@ -2,7 +2,7 @@
 
 namespace backend\widgets\control;
 
-use yii\bootstrap\Widget;
+use yii\bootstrap5\Widget;
 use yii\web\JsExpression;
 
 /**

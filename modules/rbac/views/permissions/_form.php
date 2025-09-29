@@ -48,14 +48,14 @@ use modules\rbac\Module;
                 <div class="col-md-2">
                     <div class="text-center">
                         <?= Html::submitButton(
-                            '<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>',
+                            '<span class="fas fa-arrow-left" aria-hidden="true"></span>',
                             [
                                 'class' => 'btn btn-default',
                                 'form' => 'form-items-permission'
                             ]
                         ) ?>
                         <?= Html::submitButton(
-                            '<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>',
+                            '<span class="fas fa-arrow-right" aria-hidden="true"></span>',
                             [
                                 'class' => 'btn btn-default',
                                 'form' => 'form-add-permissions'

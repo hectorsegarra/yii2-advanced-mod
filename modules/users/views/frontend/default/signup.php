@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\models\User;
 use modules\users\widgets\passfield\Passfield;
 use modules\users\models\SignupForm;
@@ -9,7 +9,7 @@ use modules\users\Module;
 
 /**
  * @var $this yii\web\View
- * @var $form yii\bootstrap\ActiveForm
+ * @var $form yii\bootstrap5\ActiveForm
  * @var $model SignupForm
  */
 
@@ -55,8 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]); ?>
 
-            <div class="form-group">
-                <?= Html::submitButton('<span class="glyphicon glyphicon-ok"></span> ' . Module::translate(
+            <div class="mb-3">
+                <?= Html::submitButton('<span class="fas fa-check"></span> ' . Module::translate(
                     'module',
                     'Send'
                 ), [

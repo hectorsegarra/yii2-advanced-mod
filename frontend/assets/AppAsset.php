@@ -4,7 +4,7 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
-use yii\bootstrap\BootstrapAsset;
+use yii\bootstrap5\BootstrapAsset;
 use common\assets\FontAwesomeAsset;
 use common\assets\Html5ShivAsset;
 use common\assets\RespondAsset;

@@ -1,8 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
@@ -36,8 +36,9 @@ AppAsset::register($this);
             ]) . Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top'
-        ]
+            'class' => 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top'
+        ],
+        'collapseOptions' => ['class' => 'collapse navbar-collapse']
     ]);
     $menuItems = [
         [
@@ -80,7 +81,7 @@ AppAsset::register($this);
             'items' => [
                 [
                     'label' => $this->render('_label', [
-                        'icon' => 'glyphicon glyphicon-user',
+                        'icon' => 'fas fa-user',
                         'title' => UserModule::translate('module', 'Profile') .
                             ' (' . $identity->username . ')'
                     ]),
@@ -90,7 +91,7 @@ AppAsset::register($this);
                 ],
                 [
                     'label' => $this->render('_label', [
-                        'icon' => 'glyphicon glyphicon-log-out',
+                        'icon' => 'fas fa-sign-out-alt',
                         'title' => UserModule::translate('module', 'Sign Out')
                     ]),
                     'url' => [
@@ -105,7 +106,7 @@ AppAsset::register($this);
     }
 
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav ms-auto mb-2 mb-lg-0'],
         'activateParents' => true,
         'encodeLabels' => false,
         'items' => array_filter($menuItems)
@@ -125,9 +126,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Yii::$app->name . ' ' . date('Y') ?></p>
+        <p class="float-start">&copy; <?= Yii::$app->name . ' ' . date('Y') ?></p>
 
-        <p class="pull-right">
+        <p class="float-end">
             Работает на <a href="http://www.yiiframework.com/" target="_blank">Yii Framework</a>
         </p>
     </div>

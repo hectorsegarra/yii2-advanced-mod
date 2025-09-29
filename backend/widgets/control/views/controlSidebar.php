@@ -35,8 +35,8 @@
                     <a href="javascript::">
                         <h4 class="control-sidebar-subheading">
                             Custom Template Design
-                                <span class="pull-right-container">
-                                  <span class="label label-danger pull-right">70%</span>
+                                <span class="float-end-container">
+                                  <span class="label label-danger float-end">70%</span>
                                 </span>
                         </h4>
 
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Report panel usage
-                        <input type="checkbox" class="pull-right" checked>
+                        <input type="checkbox" class="float-end" checked>
                     </label>
 
                     <p>

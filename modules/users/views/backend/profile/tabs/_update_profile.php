@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /* @var $this yii\web\View */
@@ -15,17 +15,15 @@ use modules\users\Module;
 
         <?= $form->field($model, 'first_name')->textInput([
             'maxlength' => true,
-            'class' => 'form-control',
             'placeholder' => true,
         ]) ?>
 
         <?= $form->field($model, 'last_name')->textInput([
             'maxlength' => true,
-            'class' => 'form-control',
             'placeholder' => true,
         ]) ?>
 
-        <div class="form-group">
+        <div class="mb-3">
             <?= Html::submitButton('<span class="fas fa-save"></span> ' . Module::translate('module', 'Save'), [
                 'class' => 'btn btn-primary',
                 'name' => 'submit-button',

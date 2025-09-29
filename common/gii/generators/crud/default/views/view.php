@@ -29,16 +29,16 @@ YiiAsset::register($this);
             <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
         </div>
         <div class="box-body">
-            <div class="pull-right">
+            <div class="float-end">
                 <p>
                     <?= "<?= " ?>Html::a(
-                        '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> ' .
+                        '<span class="fas fa-pen" aria-hidden="true"></span> ' .
                         <?= $generator->generateString('Update') ?>,
                         ['update', <?= $urlParams ?>],
                         ['class' => 'btn btn-primary']
                     ) ?>
                     <?= "<?= " ?>Html::a(
-                        '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' .
+                        '<span class="fas fa-trash" aria-hidden="true"></span> ' .
                         <?= $generator->generateString('Delete') ?>,
                         ['delete', <?= $urlParams ?>],
                         [
