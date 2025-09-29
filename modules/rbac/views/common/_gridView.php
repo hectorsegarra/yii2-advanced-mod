@@ -43,7 +43,7 @@ echo GridView::widget([
             'template' => '{view} {update} {delete}',
             'buttons' => [
                 'view' => static function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                    return Html::a('<span class="fas fa-eye"></span>', $url, [
                         'title' => Module::translate('module', 'View'),
                         'data' => [
                             'toggle' => 'tooltip'
@@ -51,7 +51,7 @@ echo GridView::widget([
                     ]);
                 },
                 'update' => static function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                    return Html::a('<span class="fas fa-pen"></span>', $url, [
                         'title' => Module::translate('module', 'Update'),
                         'data' => [
                             'toggle' => 'tooltip'
@@ -59,7 +59,7 @@ echo GridView::widget([
                     ]);
                 },
                 'delete' => static function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                    return Html::a('<span class="fas fa-trash"></span>', $url, [
                         'title' => Module::translate('module', 'Delete'),
                         'data' => [
                             'toggle' => 'tooltip',

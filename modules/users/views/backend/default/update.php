@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /**
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Update');
             </div>
         </div>
         <div class="box-footer">
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::submitButton('<span class="fas fa-save"></span> ' . Module::translate('module', 'Save'), [
                     'class' => 'btn btn-primary',
                     'name' => 'submit-button',

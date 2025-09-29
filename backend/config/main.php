@@ -1,7 +1,7 @@
 <?php
 
-use yii\bootstrap\BootstrapAsset;
-use yii\bootstrap\BootstrapPluginAsset;
+use yii\bootstrap5\BootstrapAsset;
+use yii\bootstrap5\BootstrapPluginAsset;
 use yii\log\FileTarget;
 use yii\web\UrlManager;
 use yii\helpers\ArrayHelper;
@@ -65,18 +65,8 @@ return [
         ],
         'assetManager' => [
             'bundles' => [
-                BootstrapAsset::class => [
-                    'sourcePath' => '@vendor/almasaeed2010/adminlte/bower_components/bootstrap/dist',
-                    'css' => [
-                        YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css'
-                    ]
-                ],
-                BootstrapPluginAsset::class => [
-                    'sourcePath' => '@vendor/almasaeed2010/adminlte/bower_components/bootstrap/dist',
-                    'js' => [
-                        YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js'
-                    ]
-                ]
+                BootstrapAsset::class => [],
+                BootstrapPluginAsset::class => []
             ]
         ],
         'user' => [

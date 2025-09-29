@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /**
@@ -22,23 +22,20 @@ use modules\users\Module;
 
         <?= $form->field($model, 'newPassword')->passwordInput([
             'maxlength' => true,
-            'class' => 'form-control',
             'placeholder' => true,
         ]) ?>
 
         <?= $form->field($model, 'newPasswordRepeat')->passwordInput([
             'maxlength' => true,
-            'class' => 'form-control',
             'placeholder' => true,
         ]) ?>
 
         <?= $form->field($model, 'currentPassword', ['enableAjaxValidation' => true])->passwordInput([
             'maxlength' => true,
-            'class' => 'form-control',
             'placeholder' => true,
         ]) ?>
 
-        <div class="form-group">
+        <div class="mb-3">
             <?= Html::submitButton('<span class="fas fa-save"></span> ' . Module::translate('module', 'Save'), [
                 'class' => 'btn btn-primary',
                 'name' => 'submit-button',

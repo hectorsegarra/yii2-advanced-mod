@@ -2,7 +2,7 @@
 
 namespace backend\widgets\navbar;
 
-use yii\bootstrap\Widget;
+use yii\bootstrap5\Widget;
 
 /**
  * Class NotificationsWidget

@@ -19,7 +19,7 @@ use yii\web\View;
                     <a href="#">
                         <h3>
                             Design some buttons
-                            <small class="pull-right">20%</small>
+                            <small class="float-end">20%</small>
                         </h3>
                         <div class="progress xs">
                             <div class="progress-bar progress-bar-aqua" style="width: 20%"

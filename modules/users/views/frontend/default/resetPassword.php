@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\widgets\passfield\Passfield;
 use modules\users\models\User;
 use modules\users\Module;
@@ -9,7 +9,7 @@ use modules\users\models\ResetPasswordForm;
 
 /**
  * @var $this yii\web\View
- * @var $form yii\bootstrap\ActiveForm
+ * @var $form yii\bootstrap5\ActiveForm
  * @var $model ResetPasswordForm
  */
 
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Passfield::widget([
                     'form' => $form,
                     'model' => $model,
@@ -47,9 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]); ?>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::submitButton(
-                    '<span class="glyphicon glyphicon-floppy-saved"></span> ' . Module::translate(
+                    '<span class="fas fa-save"></span> ' . Module::translate(
                         'module',
                         'Save'
                     ),

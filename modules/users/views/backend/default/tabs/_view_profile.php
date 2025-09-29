@@ -145,7 +145,7 @@ UserAsset::register($this);
 
     <div class="col-sm-offset-2 col-sm-10">
         <?= Html::a(
-            '<span class="glyphicon glyphicon-pencil"></span> '
+            '<span class="fas fa-pen"></span> '
             . Module::translate('module', 'Update'),
             ['update', 'id' => $model->id],
             [
@@ -154,7 +154,7 @@ UserAsset::register($this);
         ) ?>
 
         <?= Html::a(
-            '<span class="glyphicon glyphicon-trash"></span> '
+            '<span class="fas fa-trash"></span> '
             . Module::translate('module', 'Delete'),
             ['delete', 'id' => $model->id],
             [

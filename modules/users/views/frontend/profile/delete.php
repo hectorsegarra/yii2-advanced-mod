@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /**
@@ -24,8 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'placeholder' => true,
     ]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('<span class="glyphicon glyphicon-trash"></span> ' . Module::translate(
+    <div class="mb-3">
+        <?= Html::submitButton('<span class="fas fa-trash"></span> ' . Module::translate(
             'module',
             'Delete'
         ), [

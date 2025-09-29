@@ -21,8 +21,8 @@ $this->params['breadcrumbs'][] = $model->name;
             </h3>
         </div>
         <div class="box-body">
-            <div class="pull-left"></div>
-            <div class="pull-right"></div>
+            <div class="float-start"></div>
+            <div class="float-end"></div>
 
             <div class="row">
                 <div class="col-md-6">
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $model->name;
         <div class="box-footer">
             <p>
                 <?= Html::a(
-                    '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> ' . Module::translate(
+                    '<span class="fas fa-pen" aria-hidden="true"></span> ' . Module::translate(
                         'module',
                         'Update'
                     ),
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $model->name;
                     ]
                 ) ?>
                 <?= Html::a(
-                    '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' . Module::translate(
+                    '<span class="fas fa-trash" aria-hidden="true"></span> ' . Module::translate(
                         'module',
                         'Delete'
                     ),

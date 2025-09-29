@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
-use yii\bootstrap\Modal;
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Modal;
 use yii\web\JsExpression;
 use dominus77\jcrop\JCrop;
 use modules\users\widgets\AvatarWidget;
@@ -27,7 +27,7 @@ if (Yii::$app->request->get('modal') === 'show') {
 
 <div class="row">
     <div class="col-sm-2">
-        <div class="form-group">
+        <div class="mb-3">
             <?= AvatarWidget::widget([
                 'size' => 150,
                 'user_id' => $model->id,
@@ -37,12 +37,12 @@ if (Yii::$app->request->get('modal') === 'show') {
             ]) ?>
         </div>
         <?php if ($uploadFormModel->isThumbFile($model->id)) { ?>
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::button(
-                    '<span class="fa fa-pencil"></span> '
+                    '<span class="fas fa-pen"></span> '
                     . Module::translate('module', 'Update'),
                     [
-                        'class' => 'btn btn-sm btn-default',
+                        'class' => 'btn btn-sm btn-secondary',
                         'title' => Module::translate('module', 'Update'),
                         'data' => [
                             'toggle' => 'modal',
@@ -51,7 +51,7 @@ if (Yii::$app->request->get('modal') === 'show') {
                     ]
                 ) ?>
                 <?= Html::a(
-                    '<span class="fa fa-trash"></span> ',
+                    '<span class="fas fa-trash"></span> ',
                     [
                         'delete-avatar',
                         'id' => $model->id
@@ -86,7 +86,7 @@ if (Yii::$app->request->get('modal') === 'show') {
             ])
         ])) ?>
 
-        <div class="form-group">
+        <div class="mb-3">
             <?= Html::submitButton(
                 '<span class="fas fa-save"></span> ' . Module::translate('module', 'Save'),
                 [
@@ -109,7 +109,7 @@ Modal::begin(
             'span',
             '',
             [
-                    'class' => 'fa fa-pencil'
+                    'class' => 'fas fa-pen'
                 ]
         ) . ' ' . Module::translate('module', 'Update'),
         'footer' => Html::submitButton(
@@ -132,7 +132,7 @@ Modal::begin(
                 'id' => 'crop-avatar-form',
                 'action' => Url::to(['crop-avatar']),
             ]) ?>
-            <div class="form-group">
+            <div class="mb-3">
                 <?= JCrop::widget([
                     'image' => Url::to(
                         [

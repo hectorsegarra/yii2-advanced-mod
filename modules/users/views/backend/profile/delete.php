@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /**
@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="box-footer">
 
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::submitButton(
-                    '<span class="glyphicon glyphicon-trash"></span> '
+                    '<span class="fas fa-trash"></span> '
                     . Module::translate('module', 'Delete'),
                     [
                         'class' => 'btn btn-danger',

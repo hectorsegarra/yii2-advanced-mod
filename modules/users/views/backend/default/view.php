@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap\Tabs;
+use yii\bootstrap5\Tabs;
 use yii\helpers\Html;
 use modules\rbac\models\Assignment;
 use modules\users\Module;

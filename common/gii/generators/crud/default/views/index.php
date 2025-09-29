@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title"><?= "<?= " ?>Html::encode($this->title) ?></h3>
-            <div class="box-tools pull-right"></div>
+            <div class="box-tools float-end"></div>
         </div>
 <?= $generator->enablePjax ? "        <?php Pjax::begin(); ?>\n" : '' ?>
         <div class="box-body">
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endif; ?>
             <?php if (($generator->indexWidgetType === 'grid') && $generator->enablePageSize) : ?>
 
-            <div class="pull-left">
+            <div class="float-start">
                 <?= "<?= " ?>common\widgets\PageSize::widget([
                     'label' => '',
                     'defaultPageSize' => 25,
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])<?= " ?>\r" ?>
             </div>
             <?php endif; ?><?= "\r" ?>
-            <div class="pull-right">
+            <div class="float-end">
                 <p>
                     <?= "<?= " ?>Html::a('<span class="fa fa-plus"></span>', ['create'], [
                         'class' => 'btn btn-block btn-success',
@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pagination' => $dataProvider->pagination,
                 'registerLinkTags' => true,
                 'options' => [
-                    'class' => 'pagination pagination-sm no-margin pull-right',
+                    'class' => 'pagination pagination-sm no-margin float-end',
                 ]
             ])<?= " ?>\r"?>
         </div>

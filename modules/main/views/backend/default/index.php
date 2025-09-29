@@ -85,7 +85,7 @@ $this->params['title']['small'] = Module::translate('module', 'Dashboard');
     <div class="row">
         <section class="col-lg-7 connectedSortable">
             <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs pull-right">
+                <ul class="nav nav-tabs float-end">
                     <li class="active"><a href="#area-chart" data-toggle="tab">Area</a></li>
                     <li><a href="#doughnut-chart" data-toggle="tab">Doughnut</a></li>
                     <li><a href="#pie-chart" data-toggle="tab">Pie</a></li>
@@ -93,7 +93,7 @@ $this->params['title']['small'] = Module::translate('module', 'Dashboard');
                     <li><a href="#bar-chart" data-toggle="tab">Bar</a></li>
                     <li><a href="#radar-chart" data-toggle="tab">Radar</a></li>
                     <li><a href="#bubble-chart" data-toggle="tab">Bubble</a></li>
-                    <li class="pull-left header"><i class="fa fa-bar-chart"></i> Charts</li>
+                    <li class="float-start header"><i class="fa fa-bar-chart"></i> Charts</li>
                 </ul>
 
                 <div class="tab-content no-padding">
@@ -418,7 +418,7 @@ $this->params['title']['small'] = Module::translate('module', 'Dashboard');
                 <div class="box-header">
                     <i class="fa fa-bar-chart-o"></i>
                     <h3 class="box-title">Flot Line Ajax Chart</h3>
-                    <div class="box-tools pull-right">
+                    <div class="box-tools float-end">
                         Real time
                         <div class="btn-group" id="realtime" data-toggle="btn-toggle">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="on">On</button>
@@ -473,13 +473,13 @@ $this->params['title']['small'] = Module::translate('module', 'Dashboard');
         <section class="col-lg-5 connectedSortable">
             <div class="box box-solid bg-light-blue-gradient">
                 <div class="box-header">
-                    <div class="box-tools pull-right">
+                    <div class="box-tools float-end">
                         <!--<button type="button"
-                         class="btn btn-primary btn-sm daterange pull-right"
+                         class="btn btn-primary btn-sm daterange float-end"
                          data-toggle="tooltip"
                                 title="Date range">
                             <i class="fa fa-calendar"></i></button>-->
-                        <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse"
+                        <button type="button" class="btn btn-primary btn-sm float-end" data-widget="collapse"
                                 data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
                             <i class="fa fa-minus"></i>
                         </button>

@@ -61,13 +61,13 @@ $this->registerJs(new yii\web\JsExpression("
         ]) ?>
     </div>
     <div class="col-sm-offset-2 col-sm-10">
-        <?= Html::a('<span class="glyphicon glyphicon-pencil"></span> ' . Module::translate(
+        <?= Html::a('<span class="fas fa-pen"></span> ' . Module::translate(
             'module',
             'Update'
         ), ['update'], [
             'class' => 'btn btn-primary'
         ]) ?>
-        <?= Html::a('<span class="glyphicon glyphicon-trash"></span> ' . Module::translate(
+        <?= Html::a('<span class="fas fa-trash"></span> ' . Module::translate(
             'module',
             'Delete'
         ), ['delete'], [

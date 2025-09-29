@@ -248,7 +248,7 @@ class User extends BaseUser
     {
         if ($this->status === self::STATUS_WAIT) {
             return Html::tag('span', Html::tag('span', '', [
-                'class' => 'glyphicon glyphicon-envelope'
+                'class' => 'fas fa-envelope'
             ]), ['class' => 'label label-' . $name]);
         }
         return '';

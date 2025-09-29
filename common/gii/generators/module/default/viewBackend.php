@@ -19,11 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="box-header with-border">
             <h3 class="box-title"><?= '<?= Html::encode($this->title) ?>' ?></h3>
 
-            <div class="box-tools pull-right"></div>
+            <div class="box-tools float-end"></div>
         </div>
         <div class="box-body">
-            <div class="pull-left"></div>
-            <div class="pull-right"></div>
+            <div class="float-start"></div>
+            <div class="float-end"></div>
             <p>
                 This is the module <?= $moduleName ?> backend page.
                 You may modify the following file to customize its content:

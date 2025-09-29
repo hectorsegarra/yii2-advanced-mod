@@ -23,8 +23,8 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'Create');
             ]) ?>
         </div>
         <div class="box-footer">
-            <div class="form-group">
-                <?= Html::submitButton('<span class="glyphicon glyphicon-plus"></span> ' . Module::translate(
+            <div class="mb-3">
+                <?= Html::submitButton('<span class="fas fa-plus"></span> ' . Module::translate(
                     'module',
                     'Create'
                 ), [

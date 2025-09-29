@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'RBAC');
         <div class="box-header with-border">
             <h3 class="box-title"><?= Module::translate('module', 'RBAC') ?></h3>
 
-            <div class="box-tools pull-right">
+            <div class="box-tools float-end">
 
             </div>
         </div>
@@ -42,8 +42,8 @@ $this->params['breadcrumbs'][] = Module::translate('module', 'RBAC');
             </ul>
         </div>
         <div class="box-footer">
-            <div class="pull-right">
-                <?= Html::a('<span class="glyphicon glyphicon-repeat"></span>', Url::to(['init']), [
+            <div class="float-end">
+                <?= Html::a('<span class="fas fa-sync-alt"></span>', Url::to(['init']), [
                     'class' => 'text-yellow',
                     'data' => [
                         'toggle' => 'tooltip',

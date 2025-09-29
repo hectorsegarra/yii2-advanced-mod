@@ -2,12 +2,12 @@
 
 use modules\users\models\PasswordResetRequestForm;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use modules\users\Module;
 
 /**
  * @var $this yii\web\View
- * @var $form yii\bootstrap\ActiveForm
+ * @var $form yii\bootstrap5\ActiveForm
  * @var $model PasswordResetRequestForm
  */
 
@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'placeholder' => true,
             ]) ?>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <?= Html::submitButton(
-                    '<span class="glyphicon glyphicon-send"></span> ' . Module::translate(
+                    '<span class="fas fa-paper-plane"></span> ' . Module::translate(
                         'module',
                         'Send'
                     ),

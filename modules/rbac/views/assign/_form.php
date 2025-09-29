@@ -21,13 +21,13 @@ use modules\rbac\Module;
             ]) ?>
         </div>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <?= Html::submitButton(
             $model->isNewRecord ?
-            '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> ' . Module::translate(
+            '<span class="fas fa-plus" aria-hidden="true"></span> ' . Module::translate(
                 'module',
                 'Create'
-            ) : '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> ' . Module::translate(
+            ) : '<span class="fas fa-check" aria-hidden="true"></span> ' . Module::translate(
                 'module',
                 'Save'
             ),
