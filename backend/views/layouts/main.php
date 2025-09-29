@@ -279,7 +279,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     ]
                 ]
             ];
-            echo Menu::widget([
+            echo \yii\widgets\Menu::widget([
                 'options' => [
                     'class' => 'nav nav-pills nav-sidebar flex-column',
                     'data-lte-toggle' => 'treeview',
@@ -287,13 +287,15 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     'data-accordion' => 'false'
                 ],
                 'itemOptions' => ['class' => 'nav-item'],
-                'linkTemplate' => '<a href="{url}" class="nav-link">{label}</a>',
-                'activeLinkTemplate' => '<a href="{url}" class="nav-link active">{label}</a>',
+                'linkTemplate' => '<a href="{url}" class="nav-link">{label}</a>', // deja solo esto
+                // 'activeLinkTemplate' => '<a href="{url}" class="nav-link active">{label}</a>', // <- QUITAR
                 'encodeLabels' => false,
                 'submenuTemplate' => "\n<ul class=\"nav nav-treeview\" role=\"menu\">\n{items}\n</ul>\n",
                 'activateParents' => true,
+                'activeCssClass' => 'active',  // Yii pondrá 'active' en el <li>
                 'items' => $items
             ]);
+
             ?>
         </div>
     </aside>
@@ -363,3 +365,12 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
 </body>
 </html>
 <?php $this->endPage() ?>
+
+
+<?php
+$js = <<<JS
+document.querySelectorAll('.nav-sidebar li.active > a.nav-link').forEach(function(a){
+  a.classList.add('active');
+});
+JS;
+$this->registerJs($js);
