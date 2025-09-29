@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\Menu;
 use yii\widgets\Breadcrumbs;
+use common\widgets\Alert;
 use backend\assets\AppAsset;
 use backend\widgets\control\ControlSidebar;
 use backend\widgets\navbar\MessagesWidget;
@@ -57,7 +58,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <?= Html::csrfMetaTags() ?>
+    <?php $this->registerCsrfMetaTags() ?>
     <title><?= Yii::$app->name . ' | ' . Html::encode($this->title) ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->head() ?>
@@ -65,18 +66,22 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
 <body class="layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary">
 <?php $this->beginBody() ?>
 
-<div class="app-wrapper">
-    <nav class="app-header navbar navbar-expand bg-body border-bottom shadow-sm">
+<a class="visually-hidden-focusable" href="#main-content">
+    <?= Yii::t('app', 'Skip to main content') ?>
+</a>
+
+<div class="app-wrapper d-flex flex-column min-vh-100">
+    <nav class="app-header navbar navbar-expand bg-body border-bottom shadow-sm" role="navigation" aria-label="<?= Yii::t('app', 'Primary navigation') ?>">
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-lte-toggle="sidebar" role="button" aria-label="Toggle navigation">
+                    <button type="button" class="btn btn-link nav-link" data-lte-toggle="sidebar" aria-label="<?= Yii::t('app', 'Toggle sidebar') ?>">
                         <i class="fas fa-bars"></i>
-                    </a>
+                    </button>
                 </li>
             </ul>
             <a href="<?= $homeUrl ?>" class="navbar-brand ms-3 d-none d-md-inline-flex align-items-center">
-                <span class="fw-semibold">Admin</span><span class="fw-light ms-1">LTE</span>
+                <span class="fw-semibold"><?= Html::encode(Yii::$app->name) ?></span>
             </a>
             <ul class="navbar-nav ms-auto align-items-center">
                 <?= MessagesWidget::widget([
@@ -89,7 +94,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                 <?= NotificationsWidget::widget(['status' => true]) ?>
                 <?= TasksWidget::widget(['status' => true]) ?>
                 <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false" role="button">
                         <?= AvatarWidget::widget([
                             'user_id' => $user->id,
                             'imageOptions' => [
@@ -148,16 +153,16 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
         </div>
     </nav>
 
-    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark" aria-label="<?= Yii::t('app', 'Sidebar menu') ?>">
         <div class="app-sidebar-header d-flex align-items-center justify-content-between px-3 py-2">
             <a href="<?= $homeUrl ?>" class="app-sidebar-brand text-decoration-none text-white fw-semibold">
-                <span>AdminLTE</span>
+                <span><?= Html::encode(Yii::$app->name) ?></span>
             </a>
-            <button class="btn btn-link text-white" data-lte-toggle="sidebar" aria-label="Close sidebar">
+            <button class="btn btn-link text-white" data-lte-toggle="sidebar" aria-label="<?= Yii::t('app', 'Close sidebar') ?>">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="app-sidebar-body px-3 pb-3">
+        <div class="app-sidebar-body px-3 pb-3" id="sidebar-menu">
             <div class="d-flex align-items-center mb-3">
                 <div class="me-2">
                     <?= AvatarWidget::widget([
@@ -282,17 +287,18 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     'data-accordion' => 'false'
                 ],
                 'itemOptions' => ['class' => 'nav-item'],
+                'linkTemplate' => '<a href="{url}" class="nav-link">{label}</a>',
+                'activeLinkTemplate' => '<a href="{url}" class="nav-link active">{label}</a>',
                 'encodeLabels' => false,
-                'submenuTemplate' => "\n<ul class=\"nav nav-treeview\">\n{items}\n</ul>\n",
+                'submenuTemplate' => "\n<ul class=\"nav nav-treeview\" role=\"menu\">\n{items}\n</ul>\n",
                 'activateParents' => true,
-                
                 'items' => $items
             ]);
             ?>
         </div>
     </aside>
 
-    <main class="app-main">
+    <main class="app-main" id="main-content">
         <div class="app-content-header border-bottom">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -325,6 +331,14 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
         </div>
         <div class="app-content py-3">
             <div class="container-fluid">
+                <?= Alert::widget([
+                    'options' => ['class' => 'alert-dismissible fade show shadow-sm'],
+                    'closeButton' => [
+                        'class' => 'btn-close',
+                        'data-bs-dismiss' => 'alert',
+                        'aria-label' => Yii::t('yii', 'Close'),
+                    ],
+                ]) ?>
                 <?= $content ?>
             </div>
         </div>
